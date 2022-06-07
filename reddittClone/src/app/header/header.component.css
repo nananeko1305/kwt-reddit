@@ -1,0 +1,22 @@
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: orangered;
+}
+
+nav a {
+    margin-left: 5px;
+    display: inline-block;
+}
+
+nav a button{
+    padding: 4px;
+    border-radius: 15px;
+} 
+
+.logo {
+    width: 10%;
+    height: 5%;
+    background-color: white;
+}
