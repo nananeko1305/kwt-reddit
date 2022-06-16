@@ -7,34 +7,69 @@
             <div class="card-body p-5">
               <h2 class="text-uppercase text-center mb-5">Create an account</h2>
 
-              <form>
+              <form #signupFormHtml="ngForm" [formGroup]="signupForm" (ngSubmit)="signUp()">
 
+                
                 <div class="form-outline mb-4">
-                  <input type="text" id="form3Example1cg" class="form-control form-control-lg" required/>
                   <label class="form-label" for="form3Example1cg">Your Userame</label>
-
-                  <input type="email" id="form3Example3cg" class="form-control form-control-lg" />
+                  <input [formControlName]="'username'" type="text" id="form3Example1cg" class="form-control form-control-lg"/>
+                  <p style="margin: 0px !important;">
+                    <span *ngIf="!signupForm.controls['username'].valid && signupForm.controls['username'].touched">
+                      Pleaste type a valid username
+                    </span>
+                    <span *ngIf="this.isExist" style="color: red;">
+                      User already exist!
+                    </span>
+                  </p>
+                  <br>
                   <label class="form-label" for="form3Example3cg">Your Email</label>
+                  <input [formControlName]="'email'" type="text" id="form3Example1cg" class="form-control form-control-lg"/>
+                  <span *ngIf="!signupForm.controls['email'].valid && signupForm.controls['email'].touched">
+                    Pleaste type a valid email
+                    <br>
+                  </span><br>
+                  
 
-                  <input type="password" id="form3Example4cg" class="form-control form-control-lg" />
+                  
+
                   <label class="form-label" for="form3Example4cg">Password</label>
+                  <input [formControlName]="'password'"  type="password" id="form3Example4cg" class="form-control form-control-lg" />
+                  <span *ngIf="!signupForm.controls['password'].valid && signupForm.controls['password'].touched">
+                    Pleaste type a valid password
+                    <br>
+                </span><br>
 
-                  <input type="text" id="form3Example4cdg" class="form-control form-control-lg" />
+                  
                   <label class="form-label" for="form3Example4cdg">Display Name</label>
+                  <input [formControlName]="'displayName'"  type="text" id="form3Example4cdg" class="form-control form-control-lg" />
+                  <span *ngIf="!signupForm.controls['displayName'].valid && signupForm.controls['displayName'].touched">
+                    Pleaste type a valid Display Name
+                    <br>
+                </span><br>
 
-                  <input type="text" id="form3Example4cdg" class="form-control form-control-lg" />
+                  
                   <label class="form-label" for="form3Example4cdg">Avatar</label>
+                  <input [formControlName]="'avatar'"  type="text" id="form3Example4cdg" class="form-control form-control-lg" required/>
+                  <span *ngIf="!signupForm.controls['avatar'].valid && signupForm.controls['avatar'].touched">
+                    Pleaste type a valid avatar
+                    <br>
+                </span><br>
 
-                  <input type="text" id="form3Example4cdg" class="form-control form-control-lg" />
                   <label class="form-label" for="form3Example4cdg">Description</label>
+                  <input [formControlName]="'description'"  type="text" id="form3Example4cdg" class="form-control form-control-lg" required/>
+                  <span *ngIf="!signupForm.controls['description'].valid && signupForm.controls['description'].touched">
+                    Pleaste type a valid description
+                    <br>
+                </span><br>
+
                 </div>
+                
                 <div class="d-flex justify-content-center">
-                  <button type="button"
+                  <button type="submit" [disabled]="!signupFormHtml.form.valid"
                     class="btn btn-dark btn-block btn-lg gradient-custom-4 text-white">Register</button>
                 </div>
 
               </form>
-
             </div>
           </div>
         </div>

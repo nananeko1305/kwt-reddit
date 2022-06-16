@@ -1,4 +1,9 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Community } from 'src/app/model/community';
+import { Post } from 'src/app/model/post';
+import { CommunityService } from 'src/app/service/communityService/community.service';
+import { PostService } from 'src/app/service/postService/post.service';
 
 @Component({
   selector: 'app-home',
@@ -7,11 +12,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  hero = 'Windstorm'
+  communities! : Community[];
+  posts! : Post[];
 
-  constructor() { }
+  constructor(
+    private communityService : CommunityService,
+    private postService : PostService ) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.getAllPosts();
   }
+
+  getAllPosts(): void {
+    this.postService.getAllPosts().subscribe(
+      (response: Post[]) => {
+        this.posts = response;
+        console.log(response);
+      },
+      (error : HttpErrorResponse) => {
+        alert(error.message);
+      }
+    )
+  }
+
 
 }

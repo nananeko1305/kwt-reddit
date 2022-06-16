@@ -1,0 +1,15 @@
+.width {
+    width: 45% !important;
+    margin: auto !important;
+}
+
+.buttons{
+    padding-top: 2%;
+    text-align: center;
+}
+
+.buttons button{
+    margin-left: 5px;
+    margin-right: 5px;
+    border-radius: 30px;
+}
