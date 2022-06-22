@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { UserServiceService } from 'src/app/service/userService/user-service.service';
 import { SignupRequestPayload } from './register-request.payload';
 
@@ -14,7 +15,7 @@ export class RegisterComponent implements OnInit {
   signupForm!: FormGroup;
   isExist: boolean = false;
 
-  constructor(private userService: UserServiceService) {
+  constructor(private userService: UserServiceService, private router: Router) {
     this.signupRequest = {
       username:'',
       password:'',
@@ -44,7 +45,13 @@ export class RegisterComponent implements OnInit {
     this.signupRequest.avatar = this.signupForm.get('avatar')?.value;
     this.signupRequest.description = this.signupForm.get('description')?.value;
 
-    this.userService.signUp(this.signupRequest).subscribe(data => {console.log(data)}, error => {
+    this.userService.signUp(this.signupRequest).subscribe(
+      data => {
+        console.log(data)
+        this.router.navigate(["/login"]);
+      }, 
+      
+      error => {
       if(error['status'] == 500){
         this.isExist = true;
         console.log(this.isExist);

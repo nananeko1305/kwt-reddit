@@ -15,7 +15,7 @@
                   <input [formControlName]="'username'" type="text" id="form3Example1cg" class="form-control form-control-lg"/>
                   <p style="margin: 0px !important;">
                     <span *ngIf="!signupForm.controls['username'].valid && signupForm.controls['username'].touched">
-                      Pleaste type a valid username
+                      Please type a valid username
                     </span>
                     <span *ngIf="this.isExist" style="color: red;">
                       User already exist!
@@ -25,7 +25,7 @@
                   <label class="form-label" for="form3Example3cg">Your Email</label>
                   <input [formControlName]="'email'" type="text" id="form3Example1cg" class="form-control form-control-lg"/>
                   <span *ngIf="!signupForm.controls['email'].valid && signupForm.controls['email'].touched">
-                    Pleaste type a valid email
+                    Please type a valid email
                     <br>
                   </span><br>
                   
@@ -35,7 +35,7 @@
                   <label class="form-label" for="form3Example4cg">Password</label>
                   <input [formControlName]="'password'"  type="password" id="form3Example4cg" class="form-control form-control-lg" />
                   <span *ngIf="!signupForm.controls['password'].valid && signupForm.controls['password'].touched">
-                    Pleaste type a valid password
+                    Please type a valid password
                     <br>
                 </span><br>
 
@@ -43,7 +43,7 @@
                   <label class="form-label" for="form3Example4cdg">Display Name</label>
                   <input [formControlName]="'displayName'"  type="text" id="form3Example4cdg" class="form-control form-control-lg" />
                   <span *ngIf="!signupForm.controls['displayName'].valid && signupForm.controls['displayName'].touched">
-                    Pleaste type a valid Display Name
+                    Please type a valid Display Name
                     <br>
                 </span><br>
 
@@ -51,14 +51,14 @@
                   <label class="form-label" for="form3Example4cdg">Avatar</label>
                   <input [formControlName]="'avatar'"  type="text" id="form3Example4cdg" class="form-control form-control-lg" required/>
                   <span *ngIf="!signupForm.controls['avatar'].valid && signupForm.controls['avatar'].touched">
-                    Pleaste type a valid avatar
+                    Please type a valid avatar
                     <br>
                 </span><br>
 
                   <label class="form-label" for="form3Example4cdg">Description</label>
                   <input [formControlName]="'description'"  type="text" id="form3Example4cdg" class="form-control form-control-lg" required/>
                   <span *ngIf="!signupForm.controls['description'].valid && signupForm.controls['description'].touched">
-                    Pleaste type a valid description
+                    Please type a valid description
                     <br>
                 </span><br>
 

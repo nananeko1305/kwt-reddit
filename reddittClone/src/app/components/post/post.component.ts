@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Post } from 'src/app/model/post';
+import { User } from 'src/app/model/user';
+import { UserServiceService } from 'src/app/service/userService/user-service.service';
 
 @Component({
   selector: 'app-post',
@@ -8,9 +10,11 @@ import { Post } from 'src/app/model/post';
 })
 export class PostComponent implements OnInit {
 
-  constructor() { }
+  constructor(private userService: UserServiceService) { }
 
   @Input("onePost") post! : Post;
+  @Input("communityName") communityName!: string;
+  user! : User;
 
   ngOnInit(): void {
   }

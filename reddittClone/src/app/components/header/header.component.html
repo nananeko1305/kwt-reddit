@@ -3,11 +3,12 @@
         <a href=""><img class="logo" src="assets/Reddit_logo_new.svg.png" alt="slika"></a>
     </div>
 
-    <nav>
+    <nav *ngIf="tokenService.getToken()==''" style="display: flex !important; margin-right: 20px;">
         <a routerLink="login"><button>Login</button></a>
-    </nav>
-    <nav style="margin-right: 20px;">
         <a routerLink="register"><button>Registartion</button></a>
+    </nav>
+    <nav *ngIf="tokenService.getToken()!=''" style="display: flex !important; margin-right: 20px;">
+        <a><button (click)="logout()">Logout</button></a>
     </nav>
 
 

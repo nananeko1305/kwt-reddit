@@ -1,10 +1,24 @@
 <div class="width">
-    <div class="buttons">
-        <button routerLink="createPost">Create post</button>
-        <button>Create community</button>
+    <div class="row">
+        <div class="community col-3">
+            <p>Created communities:</p>
+            
+            <div *ngFor="let community of communities">
+                <button (click)="openOneCommunity(community.id)">r/{{community.name}}</button>
+            </div>
+            
+            <button routerLink="createCommunity" *ngIf="token!=''" class="buttons">Create community</button>
+            
+        </div>
+        <div class="post col">
+            <div *ngFor="let post of posts">
+                <app-post [onePost]=post></app-post>
+            </div>
+        </div>
     </div>
-    <div *ngFor="let post of posts">
-        <app-post [onePost]=post></app-post>
-    </div>
+    
+
+
 </div>
+
 <router-outlet></router-outlet>

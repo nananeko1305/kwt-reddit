@@ -20,3 +20,8 @@ nav a button{
     height: 5%;
     background-color: white;
 }
+
+a {
+    display: flex !important;
+    text-decoration: none;
+}
