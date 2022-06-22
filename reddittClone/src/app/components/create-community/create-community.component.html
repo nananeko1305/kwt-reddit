@@ -1,0 +1,30 @@
+<div class="topContainer">
+    <div class="podDiv mb-3">
+      <h2>Create new community:</h2>
+    </div>
+    
+    <form [formGroup]="communityForm" #communityFormHtml="ngForm" (ngSubmit)="createCommunity()">
+      <div class="inputs mb-3">
+        <h4>Name:</h4>
+        <input type="text" [formControlName]="'name'" class="form-control" placeholder="Name" aria-label="Username" aria-describedby="basic-addon1" required>
+        <span *ngIf="!communityForm.controls['name'].valid && communityForm.controls['name'].touched">
+          Please type a name of community!
+        </span>
+      </div>
+  
+      <div class="inputs mb-3">
+        <h4>Description:</h4>
+        <input type="text" [formControlName]="'description'" class="form-control" placeholder="Description" aria-label="Username" aria-describedby="basic-addon1" required>
+        <span *ngIf="!communityForm.controls['description'].valid && communityForm.controls['description'].touched">
+          Please type description of community!
+        </span>
+      </div>
+
+      <div class="podDiv">
+        <button [disabled]="!communityFormHtml.form.valid">Create post</button>
+      </div >
+      
+    </form>
+
+    
+</div>

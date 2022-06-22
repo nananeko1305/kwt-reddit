@@ -3,19 +3,25 @@
       <h2>Create new post:</h2>
     </div>
     
-    <form>
+    <form [formGroup]="postForm" (ngSubmit)="post()" #postHtml="ngForm">
       <div class="inputs mb-3">
         <h4>Title:</h4>
-        <input type="text" class="form-control" placeholder="Title" aria-label="Username" aria-describedby="basic-addon1" required>
+        <input type="text" [formControlName]="'title'" class="form-control" placeholder="Title" aria-label="Username" aria-describedby="basic-addon1" required>
+        <span *ngIf="!postForm.controls['title'].valid && postForm.controls['title'].touched">
+          Please type a title!
+        </span>
       </div>
   
       <div class="inputs mb-3">
         <h4>Text:</h4>
-        <input type="text" class="form-control" placeholder="Text" aria-label="Username" aria-describedby="basic-addon1" required>
+        <input type="text" [formControlName]="'text'" class="form-control" placeholder="Text" aria-label="Username" aria-describedby="basic-addon1" required>
+        <span *ngIf="!postForm.controls['text'].valid && postForm.controls['text'].touched">
+          Please type some text!
+        </span>
       </div>
 
       <div class="podDiv">
-        <button>Create post</button>
+        <button [disabled]="!postHtml.form.valid">Create post</button>
       </div >
       
     </form>

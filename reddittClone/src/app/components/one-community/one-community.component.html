@@ -1,0 +1,10 @@
+<div class="community">
+    <h1>r/{{community.name}}</h1>
+    
+    <button *ngIf="token!=''" (click)="createPost(community.id)">Create post</button>
+
+    <div *ngFor="let post of posts">
+        <app-post [onePost]=post [communityName]=community.name></app-post>
+    </div>
+</div>
+<router-outlet></router-outlet>

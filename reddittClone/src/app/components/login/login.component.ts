@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { UserServiceService } from 'src/app/service/userService/user-service.service';
 import { SignInRequestPayload } from './login-request';
 
@@ -14,7 +15,7 @@ export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
   isExist : boolean = false;
 
-  constructor(private userService: UserServiceService) {
+  constructor(private userService: UserServiceService, private router: Router) {
     this.signInRequest = {
       username:'',
       password:'',
@@ -39,6 +40,8 @@ export class LoginComponent implements OnInit {
     this.userService.signIn(this.signInRequest).subscribe(data => {
       console.log(data);
       this.isExist = false;
+      localStorage.setItem("token", data);
+      this.router.navigate(['/']);
     }, error => {
       if(error['status'] == 403){
         this.isExist = true;
@@ -46,4 +49,6 @@ export class LoginComponent implements OnInit {
       }
     });
   }
+
+
 }

@@ -11,6 +11,8 @@ import { HeaderComponent } from './components/header/header.component';
 import { RegisterComponent } from './components/register/register.component';
 import { PostComponent } from './components/post/post.component';
 import { CreatePostComponent } from './components/create-post/create-post.component';
+import { CreateCommunityComponent } from './components/create-community/create-community.component';
+import { OneCommunityComponent } from './components/one-community/one-community.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { CreatePostComponent } from './components/create-post/create-post.compon
     HeaderComponent,
     RegisterComponent,
     PostComponent,
-    CreatePostComponent
+    CreatePostComponent,
+    CreateCommunityComponent,
+    OneCommunityComponent
   ],
   imports: [
     BrowserModule,

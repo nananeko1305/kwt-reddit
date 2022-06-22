@@ -1,18 +1,18 @@
 <div class="row mt-4">
     <div class="col-1 div1">
-        aaa
+        Vote
     </div>
     <div class="col-11 div2">
         <div>
             <p>
                 <span>
-                    Community id: {{post.communityID}}
+                    Community: <b>r/{{post.community.name}}</b>
                 </span>
                 <span style="margin-left: 20px;">
                     Posted:<b>{{post.creationDate}}</b>
                 </span>         
                 <span style="margin-left: 20px;">
-                    Posted by: {{post.userId}}
+                    Posted by: <b>{{post.user.username}}</b>
                 </span>
             </p>
         </div>

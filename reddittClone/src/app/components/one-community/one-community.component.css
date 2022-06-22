@@ -1,0 +1,23 @@
+.community{
+    padding-top: 2%;
+    text-align: center;
+    width: 70%;
+    margin: auto;
+}
+
+.community button{
+    width: 100%;
+    background-color: orangered;
+    transition: 0.5s;
+    border: none;
+    padding: 1%;
+}
+
+.community button:hover{
+    width: 100%;
+    background-color: black;
+    color: white;
+    transition: 0.5s;
+    border: none;
+    padding: 1%;
+}
