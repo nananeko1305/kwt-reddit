@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { PostRequest } from 'src/app/components/create-post/createPost-request';
+import { Community } from 'src/app/model/community';
 import { Post } from 'src/app/model/post';
 
 @Injectable({
@@ -15,7 +15,7 @@ export class PostService {
     return this.httpClient.get<Post[]>('http://localhost:8080/posts/');
   }
 
-  savePost(postRequest: PostRequest) : Observable<any>{
+  savePost(postRequest: Post) : Observable<any>{
     let headers = new HttpHeaders({
       "Content-Type" : "application/json",
       "Token" : "Bearer " + localStorage.getItem("token"),
@@ -25,8 +25,8 @@ export class PostService {
     return this.httpClient.post<Post>('http://localhost:8080/posts/', postRequest, options);
   }
 
-  getPostsForCommunity(id: number): Observable<Post[]>{
-    return this.httpClient.get<Post[]>('http://localhost:8080/community/' + id + "/posts");
+  public getPostsForCommunity(idCommunity: number): Observable<Post[]>{
+    return this.httpClient.get<Post[]>('http://localhost:8080/community/' + idCommunity + "/posts");
   }
   
 }

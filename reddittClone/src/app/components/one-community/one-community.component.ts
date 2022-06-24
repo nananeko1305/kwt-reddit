@@ -34,9 +34,10 @@ export class OneCommunityComponent implements OnInit {
       this.community = response;
       console.log(response);
     })
-    this.postService.getPostsForCommunity(this.id).subscribe((response: Post[]) => {
+    this.postService.getPostsForCommunity(this.id).subscribe((response : Post[]) => {
       this.posts = response;
-    })
+      console.log(response);
+    });
   }
 
   createPost(id: number){

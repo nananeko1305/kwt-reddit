@@ -13,6 +13,7 @@ import { PostComponent } from './components/post/post.component';
 import { CreatePostComponent } from './components/create-post/create-post.component';
 import { CreateCommunityComponent } from './components/create-community/create-community.component';
 import { OneCommunityComponent } from './components/one-community/one-community.component';
+import { VoteComponent } from './components/vote/vote.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { OneCommunityComponent } from './components/one-community/one-community.
     PostComponent,
     CreatePostComponent,
     CreateCommunityComponent,
-    OneCommunityComponent
+    OneCommunityComponent,
+    VoteComponent
   ],
   imports: [
     BrowserModule,
