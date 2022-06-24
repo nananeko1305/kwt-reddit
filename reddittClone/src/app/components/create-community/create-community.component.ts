@@ -25,11 +25,7 @@ export class CreateCommunityComponent implements OnInit {
       description: '',
       creationDate: new Date,
       isSuspended: false,
-      suspendedReason: '',
-      moderators: [],
-      banneds: [],
-      rules: [],
-      flairs: []
+      suspendedReason: ''
     }
   }
 

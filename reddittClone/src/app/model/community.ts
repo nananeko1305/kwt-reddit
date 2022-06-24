@@ -4,9 +4,5 @@ export interface Community{
     description : string,
     creationDate : Date,
     isSuspended : boolean,
-    suspendedReason : string,
-    moderators: [],
-    banneds: [],
-    rules: [],
-    flairs: []
+    suspendedReason : string
 }

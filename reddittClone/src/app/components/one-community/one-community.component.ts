@@ -30,10 +30,10 @@ export class OneCommunityComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => { this.id = +params["id"] }),
       console.log(this.id);
-    this.communityService.getOneCommunity(this.id).subscribe((response: Community) => {
+    this.communityService.getOneCommunity(this.id).subscribe((response : Community) => {
       this.community = response;
       console.log(response);
-    })
+    });
     this.postService.getPostsForCommunity(this.id).subscribe((response : Post[]) => {
       this.posts = response;
       console.log(response);

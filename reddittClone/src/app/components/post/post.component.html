@@ -1,20 +1,27 @@
-<div class="row mt-4">
+<div class="row mt-4 parrentDiv">
     <div class="col-1 div1">
-        Vote
+        <b>Vote</b>
+        <app-vote [post]=post>Karma</app-vote>
     </div>
     <div class="col-11 div2">
-        <div>
-            <p>
-                <span>
-                    Community: <b>r/{{post.community.name}}</b>
-                </span>
-                <span style="margin-left: 20px;">
-                    Posted:<b>{{post.creationDate}}</b>
-                </span>         
-                <span style="margin-left: 20px;">
-                    Posted by: <b>{{post.user.username}}</b>
-                </span>
-            </p>
+        <div class="row">
+            <div class="col-11">
+                <p>
+                    <span>
+                        Community: <a (click)="openOneCommunity(post.community!.id)" class="communityLink"><b>r/{{post.community?.name}}</b></a>
+                    </span>
+                    <span style="margin-left: 20px;">
+                        Posted:<b>{{post.creationDate}}</b>
+                    </span>         
+                    <span style="margin-left: 20px;">
+                        Posted by: <b>{{post.user?.displayName}}</b>
+                    </span>
+                    
+                </p>
+            </div>
+            <div class="col-1" *ngIf="post.user?.role=='MODERATOR'">
+                <a (click)="deletePost(post.id)"><img class="trashPicture" src="assets/trash.png" alt="trash"></a>
+            </div>
         </div>
 
         <p><b>Title: {{post.title}}</b></p>

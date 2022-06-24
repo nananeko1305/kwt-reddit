@@ -11,9 +11,5 @@ export interface User{
     avatar: string,
     registrationDate : Date,
     description: string,
-    displayName: string,
-    posts: Array<Post>,
-    comments: Array<Comment>,
-    reporst: Array<Report>,
-    banneds: Array<Banned>
+    displayName: string
 }

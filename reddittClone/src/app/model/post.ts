@@ -10,9 +10,7 @@ export interface Post {
     text: string,
     creationDate: Date,
     imagePath: string,
-    community: Community,
-    user: User,
-    flair: Flair,
-    reports: [],
-    reactions: []
+    community?: Community,
+    user?: User,
+    flair?: Flair
 }

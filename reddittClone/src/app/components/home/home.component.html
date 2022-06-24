@@ -1,7 +1,7 @@
 <div class="width">
     <div class="row">
         <div class="community col-3">
-            <p>Created communities:</p>
+            <p>All communities:</p>
             
             <div *ngFor="let community of communities">
                 <button (click)="openOneCommunity(community.id)">r/{{community.name}}</button>

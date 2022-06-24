@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { User } from 'src/app/model/user';
 import { TokenService } from 'src/app/service/tokenService/token.service';
 import { UserServiceService } from 'src/app/service/userService/user-service.service';
 
@@ -17,7 +18,9 @@ export class HeaderComponent implements OnInit {
     this.tokenService = ts;
   }
 
+
   ngOnInit(): void {
+
   }
 
   logout(): void{
@@ -25,4 +28,7 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(["login"]);
   }
 
+  profile(){
+    this.router.navigate(["info"]);
+  }
 }

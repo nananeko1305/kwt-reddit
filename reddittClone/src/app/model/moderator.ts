@@ -1,5 +1,5 @@
 export interface Moderator{
     id: number,
-    userID: number,
-    communityID: number
+    userID?: number,
+    communityID?: number
 }
