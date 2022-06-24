@@ -7,6 +7,9 @@
         <a routerLink="login"><button>Login</button></a>
         <a routerLink="register"><button>Registartion</button></a>
     </nav>
+    <nav *ngIf="tokenService.getToken()!=''" style="display: flex !important;;">
+        <a><button routerLink="info">Profile</button></a>
+    </nav>
     <nav *ngIf="tokenService.getToken()!=''" style="display: flex !important; margin-right: 20px;">
         <a><button (click)="logout()">Logout</button></a>
     </nav>

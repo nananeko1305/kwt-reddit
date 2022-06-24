@@ -1,0 +1,12 @@
+.vote {
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+}
+
+.vote:hover {
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+    transition: 0.5s;
+}

@@ -14,6 +14,7 @@ import { CreatePostComponent } from './components/create-post/create-post.compon
 import { CreateCommunityComponent } from './components/create-community/create-community.component';
 import { OneCommunityComponent } from './components/one-community/one-community.component';
 import { VoteComponent } from './components/vote/vote.component';
+import { InfoComponent } from './components/info/info.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { VoteComponent } from './components/vote/vote.component';
     CreatePostComponent,
     CreateCommunityComponent,
     OneCommunityComponent,
-    VoteComponent
+    VoteComponent,
+    InfoComponent
   ],
   imports: [
     BrowserModule,

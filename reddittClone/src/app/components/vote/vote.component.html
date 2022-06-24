@@ -1,1 +1,11 @@
-<p>vote works!</p>
+<div class="col">
+    <div class="row">
+        <a (click)="Upvote()" class="vote">▲</a>
+    </div>
+    <div class="row">
+        <label>{{karma}}</label>
+    </div>
+    <div class="row">
+        <a (click)="Downvote()" class="vote">▼</a>
+    </div>
+</div>

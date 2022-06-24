@@ -8,8 +8,6 @@ export interface Comment{
     text: string,
     timestamp: Date,
     isDeleted: boolean,
-    post: Post,
-    user: User,
-    reactions: Array<Reaction>,
-    reports: Array<Report>
+    post?: Post,
+    user?: User
 }
