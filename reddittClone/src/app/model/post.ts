@@ -1,4 +1,7 @@
 import { Community } from "./community";
+import { Flair } from "./flair";
+import { Reaction } from "./reaction";
+import { Report } from "./report";
 import { User } from "./user";
 
 export interface Post {
@@ -8,5 +11,8 @@ export interface Post {
     creationDate: Date,
     imagePath: string,
     community: Community,
-    user: User
+    user: User,
+    flair: Flair,
+    reports: [],
+    reactions: []
 }
