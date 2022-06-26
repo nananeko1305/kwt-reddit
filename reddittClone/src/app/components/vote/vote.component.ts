@@ -28,32 +28,21 @@ export class VoteComponent implements OnInit {
     });
   }
 
-  Upvote() {
+  Vote(reactionType: string){
 
     const reaction: Reaction = {
       id: 0,
-      reactionType : "UPVOTE",
+      reactionType : reactionType,
       timestamp : new Date,
       post : this.post,
     }
 
     this.reactionService.vote(reaction, this.post.id).subscribe((response: Reaction) => {
       console.log(JSON.stringify(response))
-    });
-    
-  }
-
-  Downvote() {
-    const reaction: Reaction = {
-      id: 0,
-      reactionType : "DOWNVOTE",
-      timestamp : new Date,
-      post : this.post,
-    }
-
-    this.reactionService.vote(reaction, this.post.id).subscribe((response: Reaction) => {
-      console.log(JSON.stringify(response))
+      this.postService.getReactionsForPost(this.post.id).subscribe((response: Reaction[]) => {
+        console.log(JSON.stringify(response))
+        this.karma = this.postService.countKarma(response);
+      });
     });
   }
-
 }

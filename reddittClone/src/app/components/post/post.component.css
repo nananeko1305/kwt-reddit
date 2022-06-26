@@ -2,7 +2,6 @@
     background-color: orangered;
     text-align: center;
     vertical-align: middle;
-    
 }
 .div2 {
     border: 1px solid red;
@@ -33,4 +32,9 @@ h3{
     border-top: 1px orangered;
 }
 
+.text{
+    background-color: rgb(174, 174, 174);
+    border: 1px solid red;
+    padding-left: 1%;
+}
     

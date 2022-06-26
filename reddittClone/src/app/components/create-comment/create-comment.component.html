@@ -1,0 +1,13 @@
+<div class="parentDiv">
+    <form [formGroup]="commentForm">
+        <div class="row ">
+            <h5>Add comment</h5>
+        </div>
+        <div class="row">
+            <input [formControlName]="'commentText'" class="inputText" type="text" placeholder="Type your comment here:">
+        </div>
+        <div>
+            <button class="buttonCreate">Create comment</button>
+        </div>
+    </form>
+</div>

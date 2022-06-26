@@ -15,6 +15,10 @@ import { CreateCommunityComponent } from './components/create-community/create-c
 import { OneCommunityComponent } from './components/one-community/one-community.component';
 import { VoteComponent } from './components/vote/vote.component';
 import { InfoComponent } from './components/info/info.component';
+import { PasswordChangeComponent } from './components/password-change/password-change.component';
+import { ErrorComponent } from './components/error/error.component';
+import { CommentComponent } from './components/comment/comment.component';
+import { CreateCommentComponent } from './components/create-comment/create-comment.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +32,11 @@ import { InfoComponent } from './components/info/info.component';
     CreateCommunityComponent,
     OneCommunityComponent,
     VoteComponent,
-    InfoComponent
+    InfoComponent,
+    PasswordChangeComponent,
+    ErrorComponent,
+    CommentComponent,
+    CreateCommentComponent
   ],
   imports: [
     BrowserModule,
