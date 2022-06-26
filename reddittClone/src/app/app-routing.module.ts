@@ -3,10 +3,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { CreateCommunityComponent } from './components/create-community/create-community.component';
 import { CreatePostComponent } from './components/create-post/create-post.component';
+import { ErrorComponent } from './components/error/error.component';
 import { HomeComponent } from './components/home/home.component';
 import { InfoComponent } from './components/info/info.component';
 import { LoginComponent } from './components/login/login.component';
 import { OneCommunityComponent } from './components/one-community/one-community.component';
+import { PasswordChangeComponent } from './components/password-change/password-change.component';
 import { RegisterComponent } from './components/register/register.component';
 
 const routes: Routes = [
@@ -17,6 +19,8 @@ const routes: Routes = [
   { path: 'createCommunity', component: CreateCommunityComponent },
   { path: 'oneCommunity/:id', component: OneCommunityComponent},
   { path: 'info', component: InfoComponent},
+  { path: 'passwordChange/:id', component: PasswordChangeComponent},
+  { path: 'error', component: ErrorComponent},
 ];
 
 @NgModule({

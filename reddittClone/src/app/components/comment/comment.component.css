@@ -1,0 +1,24 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.parentDiv{
+    margin-top: 3%;
+    margin-bottom: 3%;
+    background-color: rgb(178, 178, 178);
+    border: orangered 1px solid;
+}
+
+.parentDiv div h5{
+    margin-left: 3%;
+}
+
+.inputText{
+    padding: 3%;
+    border: none;
+}
+
+div div label b {
+    padding-left: 2%;
+}

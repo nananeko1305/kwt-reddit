@@ -103,6 +103,7 @@ export class CreatePostComponent implements OnInit {
         this.reactionService.saveReaction(reaction).subscribe(
           resp => {
             console.log(resp)
+            this.router.navigate(["oneCommunity/" + custCommunity.id]);
           });
       });
 

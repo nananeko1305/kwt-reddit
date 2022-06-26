@@ -1,1 +1,42 @@
-<p>info works!</p>
+<div class="parentDiv">
+    <form [formGroup]="changeInfoForm" (ngSubmit)="changeInfo()">
+        <h1>Change your info</h1><br>
+        <p>
+            <b>Karma</b><br>
+            <label>{{karma}}</label>
+        </p>
+        <p>
+            <b>Picture</b><br>
+            <button class="btn btn-dark">Select image:</button>
+        </p>
+        <p>
+            <b>Username</b><br>
+            <input type="text" value="{{user.username}}"
+                class="form-control form-control-lg" style="text-align: center;" disabled>
+        </p>
+        <p>
+            <b>Email</b><br>
+            <input type="text" value="{{user.email}}"
+                class="form-control form-control-lg" style="text-align: center;" disabled>
+        </p>
+        <p>
+            <b>User type:</b><br>
+            <input type="text" value="{{user.role}}"
+                class="form-control form-control-lg" style="text-align: center;" disabled>
+        </p>
+        <p>
+            <b>Display name</b><br>
+            <input [formControlName]="'displayName'" type="text" value="{{user.displayName}}"
+                class="form-control form-control-lg" style="text-align: center;">
+        </p>
+        <p>
+            <b>Description</b><br>
+            <input [formControlName]="'description'" type="text" value="{{user.description}}"
+                class="form-control form-control-lg" style="text-align: center;">
+        </p>
+            <button class="btn btn-dark" style="margin-right: 2%;">Change info</button>
+            <input type="button" class="btn btn-dark" value="Change password" (click)="passwordChange(user.id)">
+    </form>
+   
+</div>
+<router-outlet></router-outlet>
