@@ -13,14 +13,20 @@ import { UserServiceService } from 'src/app/service/userService/user-service.ser
 export class HeaderComponent implements OnInit {
 
   tokenService!: TokenService;
+  user!: User;
 
-  constructor(private ts: TokenService, private router : Router) {
+  constructor(private ts: TokenService, 
+    private router : Router,
+    private userService: UserServiceService) {
     this.tokenService = ts;
   }
 
 
   ngOnInit(): void {
-
+    this.userService.returnUser().subscribe(response => {
+      this.user = response
+      console.log(JSON.stringify(response))
+    })
   }
 
   logout(): void{

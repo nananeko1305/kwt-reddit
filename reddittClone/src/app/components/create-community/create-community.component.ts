@@ -15,8 +15,12 @@ import { CommunityService } from 'src/app/service/communityService/community.ser
 })
 export class CreateCommunityComponent implements OnInit {
 
+  inputFlair: string = '';
+  inputRule: string = '';
   communityRequest: Community;
   communityForm!: FormGroup;
+  rules: Rule[] = [];
+  flairs: Flair[] = [];
 
   constructor(private communityService: CommunityService, private router: Router) {
     this.communityRequest = {
@@ -32,13 +36,17 @@ export class CreateCommunityComponent implements OnInit {
   ngOnInit(): void {
     this.communityForm = new FormGroup({
       name: new FormControl('', Validators.required),
-      description: new FormControl('', Validators.required)
+      description: new FormControl('', Validators.required),
+      flair: new FormControl(''),
+      rule: new FormControl('')
     });
   }
 
   createCommunity() {
     this.communityRequest.name = this.communityForm.get('name')?.value;
     this.communityRequest.description = this.communityForm.get('description')?.value;
+    this.communityRequest.flairs = this.flairs
+    this.communityRequest.rules = this.rules
     this.communityService.saveCommunity(this.communityRequest).subscribe(
       data => {
         console.log(data)
@@ -48,5 +56,34 @@ export class CreateCommunityComponent implements OnInit {
         console.error(error)
       })
   };
+
+  addFlair(flairName: string){
+    let newFlair: Flair = {
+      id: 0,
+      name: '',
+      isDeleted: false,
+    }
+    newFlair.name = flairName
+    console.log(newFlair)
+    this.flairs.push(newFlair);
+    console.log(this.flairs)
+    this.communityForm.patchValue({
+      flair: ''
+    })
+  }
+
+  addRule(rule :string){
+    let newRule: Rule = {
+      id: 0,
+      description: '',
+      isDeleted: false,
+    }
+    console.log(newRule)
+    this.rules.push(newRule)
+    console.log(this.rules)
+    this.communityForm.patchValue({
+      rule: ''
+    })
+  }
 
 }

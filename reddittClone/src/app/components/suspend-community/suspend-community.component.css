@@ -1,0 +1,33 @@
+.parentDiv{
+    margin: auto;
+    width: 60%;
+    margin-top: 5%;
+    border: 1px orangered solid;
+    padding: 5%;
+    padding-bottom: 3%;
+}
+
+.parentDiv h1 {
+    text-align: center;
+    padding-bottom: 3%;
+}
+
+.podDiv{
+    text-align: center;
+}
+
+.podDiv button{
+    background-color: gray;
+    padding: 1%;
+    border-radius: 100px;
+    border: none;
+    margin-top: 2%;
+}
+
+.podDiv button:hover{
+    background-color: rgb(172, 172, 172);
+    padding: 1%;
+    border-radius: 100px;
+    border: none;
+    margin-top: 2%;
+}

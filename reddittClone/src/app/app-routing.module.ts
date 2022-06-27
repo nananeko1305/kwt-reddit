@@ -10,6 +10,7 @@ import { LoginComponent } from './components/login/login.component';
 import { OneCommunityComponent } from './components/one-community/one-community.component';
 import { PasswordChangeComponent } from './components/password-change/password-change.component';
 import { RegisterComponent } from './components/register/register.component';
+import { SuspendCommunityComponent } from './components/suspend-community/suspend-community.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path: 'info', component: InfoComponent},
   { path: 'passwordChange/:id', component: PasswordChangeComponent},
   { path: 'error', component: ErrorComponent},
+  { path: 'suspendCommunity/:id', component: SuspendCommunityComponent},
 ];
 
 @NgModule({

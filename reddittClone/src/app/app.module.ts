@@ -19,6 +19,8 @@ import { PasswordChangeComponent } from './components/password-change/password-c
 import { ErrorComponent } from './components/error/error.component';
 import { CommentComponent } from './components/comment/comment.component';
 import { CreateCommentComponent } from './components/create-comment/create-comment.component';
+import { VoteComponentComponent } from './components/vote-component/vote-component.component';
+import { SuspendCommunityComponent } from './components/suspend-community/suspend-community.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import { CreateCommentComponent } from './components/create-comment/create-comme
     PasswordChangeComponent,
     ErrorComponent,
     CommentComponent,
-    CreateCommentComponent
+    CreateCommentComponent,
+    VoteComponentComponent,
+    SuspendCommunityComponent
   ],
   imports: [
     BrowserModule,

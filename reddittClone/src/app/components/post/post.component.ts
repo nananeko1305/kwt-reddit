@@ -1,8 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Comment } from 'src/app/model/comment';
 import { Moderator } from 'src/app/model/moderator';
 import { Post } from 'src/app/model/post';
 import { User } from 'src/app/model/user';
+import { CommentService } from 'src/app/service/commentService/comment.service';
 import { PostService } from 'src/app/service/postService/post.service';
 import { UserServiceService } from 'src/app/service/userService/user-service.service';
 
@@ -15,15 +17,20 @@ export class PostComponent implements OnInit {
 
   constructor(private userService: UserServiceService,
     private postService: PostService,
+    private commentService: CommentService,
     private router: Router) { }
 
   @Input("onePost") post! : Post;
   @Input("communityName") communityName!: string;
   user! : User;
   moderator!: Moderator;
+  postComments! : Comment[];
 
   ngOnInit(): void {
-    console.log(JSON.stringify(this.user))
+    this.commentService.findCommentsForPost(this.post.id).subscribe((response: Comment[]) => {
+      console.log(JSON.stringify(response))
+      this.postComments = response
+    })
   }
 
   openOneCommunity(id: number){
@@ -34,4 +41,7 @@ export class PostComponent implements OnInit {
     this.postService.deletePost(id)
   }
 
+  addComment(comment: Comment){
+    this.postComments.push(comment)
+  }
 }

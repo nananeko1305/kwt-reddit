@@ -1,7 +1,5 @@
 import { Community } from "./community";
 import { Flair } from "./flair";
-import { Reaction } from "./reaction";
-import { Report } from "./report";
 import { User } from "./user";
 
 export interface Post {
@@ -12,5 +10,6 @@ export interface Post {
     imagePath: string,
     community?: Community,
     user?: User,
-    flair?: Flair
+    flair?: Flair,
+    isDeleted: boolean
 }

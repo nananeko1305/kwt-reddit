@@ -11,6 +11,7 @@ import { Reaction } from 'src/app/model/reaction';
 import { Report } from 'src/app/model/report';
 import { Rule } from 'src/app/model/rule';
 import { User } from 'src/app/model/user';
+import { CommunityService } from 'src/app/service/communityService/community.service';
 import { PostService } from 'src/app/service/postService/post.service';
 import { ReactionService } from 'src/app/service/reactionService/reaction.service';
 
@@ -23,12 +24,23 @@ export class CreatePostComponent implements OnInit {
 
   id!: number;
   postForm!: FormGroup;
+  flairs!: Flair[];
+  selectedOption: Flair = {
+    id: 0,
+    name: '',
+    isDeleted: false
+  };
+  selectedFile = null;
+
+  
 
   constructor(
     private postService: PostService,
     private reactionService: ReactionService,
+    private communityService: CommunityService,
     private router: Router,
     private route: ActivatedRoute) { }
+
 
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => { this.id = +params["id"] }),
@@ -36,6 +48,20 @@ export class CreatePostComponent implements OnInit {
         text: new FormControl('', Validators.required),
         title: new FormControl('', Validators.required),
       });
+    this.communityService.getFlairsForCommunity(this.id).subscribe((response: Flair[]) => {
+      this.flairs = response
+      console.log(JSON.stringify(response))
+    })
+  }
+
+  onFileChanged(event:any){
+    console.log(event)
+    this.selectedFile = event.target.files[0];
+  }
+
+  selectEventHandler(event:any){
+    this.selectedOption = event.target.value;
+    console.log(event)
   }
 
   postF() {
@@ -62,6 +88,7 @@ export class CreatePostComponent implements OnInit {
     const flair: Flair = {
       id: 0,
       name: '',
+      isDeleted: false
     }
     const post: Post = {
       id: 0,
@@ -71,7 +98,8 @@ export class CreatePostComponent implements OnInit {
       imagePath: '',
       community: custCommunity,
       user: user,
-      flair: flair
+      flair: flair,
+      isDeleted: false
     }
     const comment: Comment = {
       id: 0,
@@ -106,6 +134,5 @@ export class CreatePostComponent implements OnInit {
             this.router.navigate(["oneCommunity/" + custCommunity.id]);
           });
       });
-
   }
 }

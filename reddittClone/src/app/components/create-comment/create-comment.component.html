@@ -1,5 +1,5 @@
-<div class="parentDiv">
-    <form [formGroup]="commentForm">
+<div class="parentDiv" *ngIf="token != ''">
+    <form [formGroup]="commentForm" (ngSubmit)="createComment()">
         <div class="row ">
             <h5>Add comment</h5>
         </div>
