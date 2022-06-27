@@ -1,10 +1,11 @@
 <div class="community">
     <h1>r/{{community.name}}</h1>
+    <h3>{{community.description}}</h3>
+    <button  *ngIf="user != null && user.role=='ADMIN'" class="btn" (click)="suspendCommunity(community.id)">Suspend Community</button><br><br>
     
-    <button *ngIf="token!=''" (click)="createPost(community.id)">Create post</button>
+    <button (click)="createPost(community.id)">Create post</button>
 
     <div *ngFor="let post of posts">
         <app-post [onePost]=post [communityName]=community.name></app-post>
     </div>
 </div>
-<router-outlet></router-outlet>

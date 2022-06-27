@@ -9,5 +9,5 @@ export interface Comment{
     timestamp: Date,
     isDeleted: boolean,
     post?: Post,
-    user?: User
+    user?: User,
 }

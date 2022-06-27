@@ -26,10 +26,10 @@
         <h5>Title: {{post.title}}</h5>
         <p class="text">Text: {{post.text}}</p>
         <div>
-            <app-create-comment [post]="post"></app-create-comment>
+            <app-create-comment [post]="post" (addComment)="addComment($event)"></app-create-comment>
         </div>
-        <div>
-            <app-comment></app-comment>
+        <div *ngFor="let comment of postComments">
+            <app-comment [comment]="comment"></app-comment>
         </div>
     </div>
 

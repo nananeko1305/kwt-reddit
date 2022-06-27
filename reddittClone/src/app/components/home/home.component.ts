@@ -14,48 +14,64 @@ import { TokenService } from 'src/app/service/tokenService/token.service';
 })
 export class HomeComponent implements OnInit {
 
-  communities! : Community[];
-  posts! : Post[];
+  communities!: Community[];
+  posts!: Post[];
   token!: string | null;
 
   constructor(
-    private communityService : CommunityService,
-    private postService : PostService,
+    private communityService: CommunityService,
+    private postService: PostService,
     private tokenService: TokenService,
-    private router: Router ) { 
-      this.token = tokenService.getToken();
-    }
-
-  ngOnInit() {
-    this.getAllPosts();
-    this.getAllCommunities();
+    private router: Router) {
+    this.token = tokenService.getToken();
   }
 
-  getAllPosts(): void {
-    this.postService.getAllPosts().subscribe(
-      (response: Post[]) => {
-        this.posts = response;
-        console.log(response);
-      },
-      (error : HttpErrorResponse) => {
-        alert(error.message);
-      }
-    )
+  ngOnInit() {
+    this.getAllCommunities();
+    this.getAllPosts();
   }
 
   getAllCommunities(): void {
     this.communityService.getAllCommunities().subscribe(
       (response: Community[]) => {
         this.communities = response;
-        console.log(response);
+        console.log(JSON.stringify(response));
       },
-      (error : HttpErrorResponse) => {
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    )
+    // }
+
+  }
+
+  getAllPosts(): void {
+    this.postService.getAllPosts().subscribe(
+      (response: Post[]) => {
+        console.log(JSON.stringify(response))
+        this.posts = this.randomArrayShuffle(response)
+      },
+      (error: HttpErrorResponse) => {
         alert(error.message);
       }
     )
   }
-  
-  openOneCommunity(id: number){
-    this.router.navigate(["/oneCommunity",id])
+
+  openOneCommunity(id: number) {
+    this.router.navigate(["/oneCommunity", id])
+  }
+
+
+  randomArrayShuffle(posts: Post[]) {
+    var currentIndex = posts.length, temporaryValue, randomIndex;
+    while (0 !== currentIndex) {
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+      temporaryValue = posts[currentIndex];
+      posts[currentIndex] = posts[randomIndex];
+      posts[randomIndex] = temporaryValue;
+    }
+    return posts;
+
   }
 }

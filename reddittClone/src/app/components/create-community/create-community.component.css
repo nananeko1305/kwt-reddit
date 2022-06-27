@@ -1,7 +1,10 @@
 .topContainer{
-    width: 65% !important;
-    margin: auto !important;
+    width: 65% ;
+    margin: auto;
+    margin-top: 30px;
     padding: 100px;
+    padding-top: 20px;
+    padding-bottom: 30px;
     border: solid;
     background-color: rgb(219, 219, 219);
 }
@@ -10,7 +13,13 @@
    text-align: center !important;
 }
 
+.podDiv input{
+   width: 25%;
+   text-align: center;
+   border-radius: 20px;
+}
+
  .inputs{
-    padding-top: 3%;
+    padding-top: 1%;
  }
  

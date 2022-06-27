@@ -1,0 +1,16 @@
+<div class="col parentDiv">
+  <form [formGroup]="suspendForm" (ngSubmit)="suspend()" #suspendHtml="ngForm">
+    <h1>Why you suspend r/{{community.name}}?</h1>
+    <div class="inputs mb-3">
+      <input type="text" [formControlName]="'reason'" class="form-control" aria-label="Username"
+        aria-describedby="basic-addon1" placeholder="Suspend reason" required>
+      <span *ngIf="!suspendForm.controls['reason'].valid && suspendForm.controls['reason'].touched">
+        Please type reason of suspend!
+      </span>
+    </div>
+
+    <div class="podDiv">
+      <button [disabled]="!suspendHtml.form.valid">Suspend this community</button>
+    </div>
+  </form>
+</div>

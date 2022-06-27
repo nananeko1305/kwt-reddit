@@ -15,8 +15,7 @@ h3{
 
 .communityLink{
     cursor: pointer;
-    color: black    ;
-    text-decoration: none;
+    color: blue;
 }
 
 .communityLink:hover{

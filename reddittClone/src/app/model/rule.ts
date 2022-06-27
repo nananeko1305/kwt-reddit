@@ -3,5 +3,6 @@ import { Community } from "./community";
 export interface Rule{
     id: number,
     description: string,
-    community?: Community
+    community?: Community,
+    isDeleted: boolean,
 }

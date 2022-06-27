@@ -1,12 +1,16 @@
-<div class="parentDiv">
-    <div class="row">
-        <label><b>Posted by:</b></label>
+<div class="row parentDiv">
+    <div class="col-1 div1">
+        <b>Vote</b>
+        <app-vote-component [comment]="comment"></app-vote-component>
     </div>
-    <div class="row">
-        <label class="inputText">asdas</label>
+    <div class="col-11 div2">
+        <div class="row">
+            <label><b>Posted by:</b>{{" "+comment.user?.displayName}}</label>
+        </div>
+        <div class="row">
+            <label class="inputText">{{comment.text}}</label>
+        </div>
     </div>
-    <div>
-        reply
-    </div>
+    
     
 </div>

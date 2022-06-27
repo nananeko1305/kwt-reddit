@@ -1,7 +1,10 @@
 .topContainer{
-    width: 65% !important;
-    margin: auto !important;
+    width: 65%;
+    margin: auto;
+    margin-top: 3%;
     padding: 100px;
+    padding-top: 30px;
+    padding-bottom: 30px;
     border: solid;
     background-color: rgb(219, 219, 219);
 }
@@ -14,3 +17,15 @@
     padding-top: 3%;
  }
  
+ .selectDiv{
+   text-align: center;
+ }
+ .selectDiv select{
+   padding: 10px;
+   font-size: 16px;
+ }
+
+ button{
+   padding: 10px;
+   border-radius: 20px;
+ }
