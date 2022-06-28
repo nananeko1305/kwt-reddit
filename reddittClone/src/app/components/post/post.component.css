@@ -36,4 +36,22 @@ h3{
     border: 1px solid red;
     padding-left: 1%;
 }
+
+.commentSort {
+    margin-top: 2%;
+    text-align: center;
+    border: 1px orangered solid;
+}
+
+.commentSort a{
+    cursor: pointer;
+    margin-left: 0.5%;
+    margin-right: 0.5%;
+    padding-left: 2%;
+    padding-right: 2%;
+    background-color: white;
+    text-align: center;
+    text-decoration: double;
+    border-radius: 20px;
+}
     

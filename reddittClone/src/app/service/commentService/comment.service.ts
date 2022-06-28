@@ -3,6 +3,7 @@ import { Injectable, Input } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Comment } from 'src/app/model/comment';
 import { Reaction } from 'src/app/model/reaction';
+import { SortType } from 'src/app/model/sortType';
 
 @Injectable({
   providedIn: 'root'
@@ -31,6 +32,10 @@ export class CommentService {
 
   findCommentsForPost(postId: number): Observable<Comment[]>{
     return this.httpClient.get<Comment[]>("http://localhost:8080/posts/" + postId + "/comments/");
+  }
+
+  getSortedComments(sortType: SortType): Observable<Comment[]>{
+    return this.httpClient.get<Comment[]>("http://localhost:8080/posts/" + sortType.postId + "/comments/sort/" + sortType.sortType);
   }
 
   getReactionsForComment(commentId: number): Observable<Reaction[]>{

@@ -37,6 +37,10 @@ export class PostService {
   public deletePost(idPost: number): Observable<Post>{
     return this.httpClient.delete<Post>('http://localhost:8080/posts/' + idPost);
   }
+
+  getAllPostsSorted(sortType: string): Observable<Post[]>{
+    return this.httpClient.get<Post[]>('http://localhost:8080/posts/sort/' + sortType);
+  }
   
   public countKarma(reactions: Reaction[]): number{
 
