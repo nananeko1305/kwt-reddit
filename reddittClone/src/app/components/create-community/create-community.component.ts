@@ -29,7 +29,8 @@ export class CreateCommunityComponent implements OnInit {
       description: '',
       creationDate: new Date,
       isSuspended: false,
-      suspendedReason: ''
+      suspendedReason: '',
+      moderators: []
     }
   }
 
@@ -61,7 +62,7 @@ export class CreateCommunityComponent implements OnInit {
     let newFlair: Flair = {
       id: 0,
       name: '',
-      isDeleted: false,
+      deleted: false,
     }
     newFlair.name = flairName
     console.log(newFlair)
@@ -78,6 +79,7 @@ export class CreateCommunityComponent implements OnInit {
       description: '',
       isDeleted: false,
     }
+    newRule.description = rule
     console.log(newRule)
     this.rules.push(newRule)
     console.log(this.rules)

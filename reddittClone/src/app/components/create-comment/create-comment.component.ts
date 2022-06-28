@@ -43,7 +43,6 @@ export class CreateCommentComponent implements OnInit {
   ngOnInit(): void {
 
     this.token = localStorage.getItem("token")
-    console.log(this.token)
 
     this.commentForm = new FormGroup({
       commentText: new FormControl('', Validators.required)

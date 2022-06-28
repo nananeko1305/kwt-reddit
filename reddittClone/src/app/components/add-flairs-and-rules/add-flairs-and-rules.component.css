@@ -1,0 +1,70 @@
+.parentDiv{
+    margin: auto;
+    width: 60%;
+}
+
+.div1{
+    border: 1px orangered solid;
+    background-color: rgb(175, 175, 175);
+    width: 100%;
+    text-align: center;
+    margin-bottom: 2%;
+    display: flex;
+    justify-content: center;
+}
+
+.div2{
+    border: 1px orangered solid;
+    background-color: rgb(175, 175, 175);
+    width: 100%;
+    text-align: center;
+}
+
+.div1_1{
+    display: inline-block;
+    margin-right: 2%;
+    font-size: 20px;
+}
+
+.div1_2{
+    display: inline-block;
+    margin-left: 2%;
+    font-size: 20px;
+}
+
+.div2_1{
+    display: inline-block;
+    margin-right: 2%;
+    font-size: 20px;
+}
+
+.div2_2{
+    display: inline-block;
+    margin-left: 2%;
+    font-size: 20px;
+}
+
+.div2_2 input {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.div2_2 button{
+    border: none;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    margin-bottom: 7%;
+}
+
+.delete {
+    text-decoration: none;
+    color: red;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.delete:hover {
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}

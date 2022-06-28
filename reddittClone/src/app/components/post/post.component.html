@@ -16,6 +16,9 @@
                     <span style="margin-left: 20px;">
                         Posted by: <b>{{post.user?.displayName}}</b>
                     </span>
+                    <span style="margin-left: 20px;" *ngIf="!post.flair?.deleted">
+                        Flair: <b>{{post.flair?.name}}</b>
+                    </span>
                     
                 </p>
             </div>

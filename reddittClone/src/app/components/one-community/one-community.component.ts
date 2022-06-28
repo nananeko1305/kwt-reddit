@@ -2,6 +2,7 @@ import { HttpStatusCode } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Community } from 'src/app/model/community';
+import { Moderator } from 'src/app/model/moderator';
 import { Post } from 'src/app/model/post';
 import { User } from 'src/app/model/user';
 import { CommunityService } from 'src/app/service/communityService/community.service';
@@ -17,10 +18,29 @@ import { UserServiceService } from 'src/app/service/userService/user-service.ser
 export class OneCommunityComponent implements OnInit {
 
   id!: number;
-  community!: Community;
+  community: Community = {
+    id: 0,
+    name: '',
+    description: '',
+    creationDate: new Date,
+    isSuspended: false,
+    suspendedReason: '',
+    moderators: new Array<Moderator>()
+  };
   posts!: Post[];
   token!: string | null;
-  user!: User;
+  user: User = {
+    id: 0,
+    username: '',
+    role: '',
+    password: '',
+    email: '',
+    avatar: '',
+    registrationDate: new Date,
+    description: '',
+    displayName: ''
+  };
+  isModerator: boolean = false;
 
 
   constructor(private router: Router,
@@ -28,32 +48,43 @@ export class OneCommunityComponent implements OnInit {
     private communityService: CommunityService,
     private postService: PostService,
     private tokenService: TokenService,
-    private userService: UserServiceService) { 
-      this.token = tokenService.getToken();
-    }
-
-  ngOnInit(): void {
-    this.userService.returnUser().subscribe((response: User)=>{
-      this.user = response
-      console.log(JSON.stringify(response))
-    })
-    this.route.params.subscribe((params: Params) => { this.id = +params["id"] }),
-      console.log(this.id);
-    this.communityService.getOneCommunity(this.id).subscribe((response : Community) => {
-      this.community = response;
-      console.log(response);
-    });
-    this.postService.getPostsForCommunity(this.id).subscribe((response : Post[]) => {
-      this.posts = response;
-      console.log(response);
-    });
+    private userService: UserServiceService) {
+    this.token = tokenService.getToken();
   }
 
-  createPost(id: number){
+  ngOnInit(): void {
+
+    this.userService.returnUser().subscribe((response: User) => {
+      this.user = response
+    })
+
+    this.route.params.subscribe((params: Params) => { this.id = +params["id"] })
+
+    this.communityService.getOneCommunity(this.id).subscribe((response: Community) => {
+      this.community = response;
+      console.log(JSON.stringify(this.community.moderators))
+      for (let moderator of this.community.moderators) {
+        if (moderator.userID == this.user.id && moderator.communityID == this.community.id) {
+          this.isModerator = true;
+          console.log(this.isModerator)
+        }
+      }
+    });
+
+    this.postService.getPostsForCommunity(this.id).subscribe((response: Post[]) => {
+      this.posts = response;
+    });
+
+    
+  }
+
+
+
+  createPost(id: number) {
     this.router.navigate(["createPost", id]);
   }
 
-  suspendCommunity(id: number){
+  suspendCommunity(id: number) {
     this.router.navigate(["suspendCommunity", id]);
   }
 

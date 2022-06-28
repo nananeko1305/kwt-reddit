@@ -21,9 +21,7 @@ export class VoteComponent implements OnInit {
     private reactionService: ReactionService) { }
 
   ngOnInit(): void {
-    console.log(JSON.stringify(this.post))
     this.postService.getReactionsForPost(this.post.id).subscribe((response: Reaction[]) => {
-      console.log(JSON.stringify(response))
       this.karma = this.postService.countKarma(response);
     });
   }
@@ -38,9 +36,7 @@ export class VoteComponent implements OnInit {
     }
 
     this.reactionService.vote(reaction, this.post.id).subscribe((response: Reaction) => {
-      console.log(JSON.stringify(response))
       this.postService.getReactionsForPost(this.post.id).subscribe((response: Reaction[]) => {
-        console.log(JSON.stringify(response))
         this.karma = this.postService.countKarma(response);
       });
     });

@@ -25,7 +25,6 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.userService.returnUser().subscribe(response => {
       this.user = response
-      console.log(JSON.stringify(response))
     })
   }
 

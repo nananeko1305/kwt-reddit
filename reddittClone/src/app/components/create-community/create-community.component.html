@@ -23,13 +23,13 @@
       <div class="inputs mb-3">
         <h4>Flair:</h4>
         <input type="text" [formControlName]="'flair'" class="form-control" placeholder="Flair" aria-label="Username" aria-describedby="basic-addon1" [(ngModel)]="inputFlair">
-        <button [disabled]="inputFlair===''" (click)="addFlair(inputFlair)" type="button">Add flair</button>
+        <button [disabled]="inputFlair===''" (click)="addFlair(inputFlair)" type="button">Add flair</button><p *ngFor="let flair of flairs">{{flair.name}}</p>
       </div>
 
       <div class="inputs mb-3">
         <h4>Rule:</h4>
         <input type="text" [formControlName]="'rule'" class="form-control" placeholder="Flair" aria-label="Username" aria-describedby="basic-addon1" [(ngModel)]="inputRule">
-        <button [disabled]="inputRule===''" (click)="addRule(inputRule)" type="button">Add rule</button>
+        <button [disabled]="inputRule===''" (click)="addRule(inputRule)" type="button">Add rule</button><p *ngFor="let rule of rules">{{rule.description}}</p>
       </div>
       
       <div class="podDiv">

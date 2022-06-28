@@ -1,4 +1,5 @@
 import { Flair } from "./flair";
+import { Moderator } from "./moderator";
 import { Rule } from "./rule";
 
 export interface Community{
@@ -9,5 +10,6 @@ export interface Community{
     isSuspended : boolean,
     suspendedReason : string,
     flairs?: Flair[],
-    rules?: Rule[]
+    rules?: Rule[],
+    moderators: Moderator[]
 }

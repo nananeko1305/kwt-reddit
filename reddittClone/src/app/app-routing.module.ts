@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
+import { AddFlairsAndRulesComponent } from './components/add-flairs-and-rules/add-flairs-and-rules.component';
 import { CreateCommunityComponent } from './components/create-community/create-community.component';
 import { CreatePostComponent } from './components/create-post/create-post.component';
 import { ErrorComponent } from './components/error/error.component';
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path: 'passwordChange/:id', component: PasswordChangeComponent},
   { path: 'error', component: ErrorComponent},
   { path: 'suspendCommunity/:id', component: SuspendCommunityComponent},
+  { path: 'oneCommunity/:id/add', component: AddFlairsAndRulesComponent},
 ];
 
 @NgModule({

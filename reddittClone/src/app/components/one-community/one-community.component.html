@@ -1,11 +1,25 @@
 <div class="community">
-    <h1>r/{{community.name}}</h1>
-    <h3>{{community.description}}</h3>
-    <button  *ngIf="user != null && user.role=='ADMIN'" class="btn" (click)="suspendCommunity(community.id)">Suspend Community</button><br><br>
-    
+    <h1 style="color: blue;">r/{{community.name}}</h1>
+    <h3>Description: {{community.description}}</h3>
+    <div *ngIf="user != null && user.role=='ADMIN'">
+        <button class="btn" (click)="suspendCommunity(community.id)">Suspend Community</button><br><br>
+    </div>
+    <div class="rules">
+        <h3><i>Rules:</i></h3>
+        <div *ngFor="let rule of community.rules">
+            <label>{{rule.description}}</label>
+        </div>
+    </div>
+
+    <div *ngIf="isModerator==true">
+        <button class="btn" routerLink="add">Add flairs and rules</button><br><br>
+    </div>
+
+
     <button (click)="createPost(community.id)">Create post</button>
 
     <div *ngFor="let post of posts">
         <app-post [onePost]=post [communityName]=community.name></app-post>
     </div>
 </div>
+<router-outlet></router-outlet>

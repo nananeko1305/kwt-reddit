@@ -38,14 +38,12 @@ export class LoginComponent implements OnInit {
     this.signInRequest.password = this.loginForm.get('password')?.value;
 
     this.userService.signIn(this.signInRequest).subscribe(data => {
-      console.log(data);
       this.isExist = false;
       localStorage.setItem("token", data);
       this.router.navigate(['/']);
     }, error => {
       if(error['status'] == 403){
         this.isExist = true;
-        console.log(this.isExist);
       }
     });
   }
