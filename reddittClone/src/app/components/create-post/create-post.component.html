@@ -6,9 +6,9 @@
   <form [formGroup]="postForm" (ngSubmit)="postF()" #postHtml="ngForm">
 
     <div class="selectDiv">
-      <select (change)="selectEventHandler($event)">
+      <select (change)="selectEventHandler($event)" #selectFlair>
         <option value="">SelectFlair</option>
-        <option *ngFor="let flair of flairs" value="{{flair}}">{{flair.name}}</option>
+        <option *ngFor="let flair of flairs" value="{{flair.id}}">{{flair.name}}</option>
       </select>
     </div>
 

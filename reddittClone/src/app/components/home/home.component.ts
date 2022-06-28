@@ -35,7 +35,6 @@ export class HomeComponent implements OnInit {
     this.communityService.getAllCommunities().subscribe(
       (response: Community[]) => {
         this.communities = response;
-        console.log(JSON.stringify(response));
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
@@ -48,7 +47,6 @@ export class HomeComponent implements OnInit {
   getAllPosts(): void {
     this.postService.getAllPosts().subscribe(
       (response: Post[]) => {
-        console.log(JSON.stringify(response))
         this.posts = this.randomArrayShuffle(response)
       },
       (error: HttpErrorResponse) => {

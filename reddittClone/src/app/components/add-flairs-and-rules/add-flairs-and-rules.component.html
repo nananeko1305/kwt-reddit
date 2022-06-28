@@ -1,0 +1,37 @@
+<h1 class="my-4" style="text-align: center;">Change rules and flairs</h1>
+<div class="col parentDiv">
+    <div class="div1">
+        <div class="div1_1">
+            <h3>Flairs:</h3>
+            <div *ngFor="let flair of flairs">
+                <label>{{flair.name}}</label> <a class="delete" (click)="deleteFlair(flair.id)"> X</a>
+            </div>
+
+        </div>
+        <div class="div1_2">
+            <h3>Rules:</h3>
+            <div *ngFor="let rule of rules">
+                <label for="">{{rule.description}}</label> <a class="delete" (click)="deleteRule(rule.id)"> X</a>
+            </div>
+        </div>
+
+    </div>
+    <div class="div2">
+        <div class="div2_2">
+            <h3>Add flair:</h3>
+            <form [formGroup]="addFlairForm" (ngSubmit)="addFlair()" #flairFormHTML="ngForm">
+                <input type="text" [formControlName]="'addFlair'" placeholder="Type flair:">
+                <button [disabled]="!flairFormHTML.valid">Add</button>
+            </form>
+        </div>
+        <div class="div2_2">
+            <h3>Add rule:</h3>
+            <form [formGroup]="addRuleForm" (ngSubmit)="addRule()" #ruleFormHTML="ngForm">
+                <input type="text" [formControlName]="'addRule'" placeholder="Type rule:">
+                <button [disabled]="!ruleFormHTML.valid">Add</button>
+            </form>
+
+        </div>
+
+    </div>
+</div>

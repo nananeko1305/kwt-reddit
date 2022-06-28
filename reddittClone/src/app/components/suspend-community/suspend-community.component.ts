@@ -29,15 +29,12 @@ export class SuspendCommunityComponent implements OnInit {
     this.route.params.subscribe((params: Params) => { this.id = +params["id"] })
     this.communityService.getOneCommunity(this.id).subscribe((response: Community) => {
       this.community = response
-      console.log(JSON.stringify(response))
     })
   }
   
   suspend(){
     this.community.suspendedReason = this.suspendForm.get('reason')?.value;
-    console.log(JSON.stringify(this.community.suspendedReason))
     this.communityService.suspendCommunity(this.community).subscribe((response: Community) => {
-      console.log(JSON.stringify(response))
       this.router.navigate([""])
     })
     

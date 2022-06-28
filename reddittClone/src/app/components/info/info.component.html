@@ -1,13 +1,9 @@
 <div class="parentDiv">
-    <form [formGroup]="changeInfoForm" (ngSubmit)="changeInfo()">
-        <h1>Change your info</h1><br>
+    <form [formGroup]="changeInfoForm" (ngSubmit)="changeInfo()" #filedHtml="ngForm">
+        <h1>Change your info</h1>
         <p>
             <b>Karma</b><br>
             <label>{{karma}}</label>
-        </p>
-        <p>
-            <b>Picture</b><br>
-            <button class="btn btn-dark">Select image:</button>
         </p>
         <p>
             <b>Username</b><br>
@@ -34,7 +30,10 @@
             <input [formControlName]="'description'" type="text" value="{{user.description}}"
                 class="form-control form-control-lg" style="text-align: center;">
         </p>
-            <button class="btn btn-dark" style="margin-right: 2%;">Change info</button>
+        <p *ngIf="successfully">
+            <label style="color: rgb(14, 125, 14);">Succesfully changed info</label>
+        </p>
+            <button class="btn btn-dark" style="margin-right: 2%;" [disabled]="!filedHtml.form.valid">Change info</button>
             <input type="button" class="btn btn-dark" value="Change password" (click)="passwordChange(user.id)">
     </form>
    

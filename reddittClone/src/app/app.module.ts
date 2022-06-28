@@ -21,6 +21,7 @@ import { CommentComponent } from './components/comment/comment.component';
 import { CreateCommentComponent } from './components/create-comment/create-comment.component';
 import { VoteComponentComponent } from './components/vote-component/vote-component.component';
 import { SuspendCommunityComponent } from './components/suspend-community/suspend-community.component';
+import { AddFlairsAndRulesComponent } from './components/add-flairs-and-rules/add-flairs-and-rules.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { SuspendCommunityComponent } from './components/suspend-community/suspen
     CommentComponent,
     CreateCommentComponent,
     VoteComponentComponent,
-    SuspendCommunityComponent
+    SuspendCommunityComponent,
+    AddFlairsAndRulesComponent
   ],
   imports: [
     BrowserModule,

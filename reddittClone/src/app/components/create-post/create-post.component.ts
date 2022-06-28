@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Banned } from 'src/app/model/banned';
@@ -12,6 +12,7 @@ import { Report } from 'src/app/model/report';
 import { Rule } from 'src/app/model/rule';
 import { User } from 'src/app/model/user';
 import { CommunityService } from 'src/app/service/communityService/community.service';
+import { FlairService } from 'src/app/service/flairService/flair.service';
 import { PostService } from 'src/app/service/postService/post.service';
 import { ReactionService } from 'src/app/service/reactionService/reaction.service';
 
@@ -28,8 +29,9 @@ export class CreatePostComponent implements OnInit {
   selectedOption: Flair = {
     id: 0,
     name: '',
-    isDeleted: false
+    deleted: false
   };
+  @ViewChild('selectFlair') selectFlair! : ElementRef;
   selectedFile = null;
 
   
@@ -39,7 +41,8 @@ export class CreatePostComponent implements OnInit {
     private reactionService: ReactionService,
     private communityService: CommunityService,
     private router: Router,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    private flairService: FlairService) { }
 
 
   ngOnInit(): void {
@@ -60,8 +63,11 @@ export class CreatePostComponent implements OnInit {
   }
 
   selectEventHandler(event:any){
-    this.selectedOption = event.target.value;
-    console.log(event)
+    console.log(this.selectFlair.nativeElement.value)
+    this.flairService.getOneFlair(this.selectFlair.nativeElement.value).subscribe((response: Flair)=>{
+        console.log(response)
+        this.selectedOption = response
+    })
   }
 
   postF() {
@@ -73,6 +79,7 @@ export class CreatePostComponent implements OnInit {
       creationDate: new Date(),
       isSuspended: false,
       suspendedReason: '',
+      moderators: []
     }
     const user: User = {
       id: 0,
@@ -88,7 +95,7 @@ export class CreatePostComponent implements OnInit {
     const flair: Flair = {
       id: 0,
       name: '',
-      isDeleted: false
+      deleted: false
     }
     const post: Post = {
       id: 0,
@@ -121,6 +128,7 @@ export class CreatePostComponent implements OnInit {
 
     post.text = this.postForm.get('text')?.value;
     post.title = this.postForm.get('title')?.value;
+    post.flair = this.selectedOption;
 
     this.postService.savePost(post).subscribe(
       response => {

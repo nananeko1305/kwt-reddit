@@ -4,5 +4,5 @@ import { Post } from "./post"
 export interface Flair {
     id: number,
     name: string,
-    isDeleted: boolean,
+    deleted: boolean,
 }

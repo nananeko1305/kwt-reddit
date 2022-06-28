@@ -28,8 +28,8 @@ export class PostComponent implements OnInit {
 
   ngOnInit(): void {
     this.commentService.findCommentsForPost(this.post.id).subscribe((response: Comment[]) => {
-      console.log(JSON.stringify(response))
       this.postComments = response
+      
     })
   }
 

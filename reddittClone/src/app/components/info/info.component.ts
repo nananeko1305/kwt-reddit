@@ -1,3 +1,4 @@
+import { HttpStatusCode } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -16,6 +17,7 @@ export class InfoComponent implements OnInit {
   user!: User;
   changeInfoForm!: FormGroup;
   karma! : number;
+  successfully : boolean = false;
 
   constructor(
     private tokenService: TokenService,
@@ -43,8 +45,10 @@ export class InfoComponent implements OnInit {
   changeInfo() {
     this.user.displayName = this.changeInfoForm.get("displayName")?.value;
     this.user.description = this.changeInfoForm.get("description")?.value;
-    this.userService.changeUser(this.user).subscribe((response: User) => {
-      console.log(JSON.stringify(this.user))
+    this.userService.changeUser(this.user).subscribe((response: HttpStatusCode) => {
+      if(HttpStatusCode.Ok){
+        this.successfully = true
+      }
     })
   }
 
