@@ -1,8 +1,9 @@
 .width {
     width: 70% !important;
-    margin-top: 3%;
+    margin-top: 2%;
     margin-left: auto;
     margin-right: auto;
+    text-align: center;
 }
 
 .buttons {
@@ -80,4 +81,24 @@
     background-color: black;
     color: white;
     border: none;
+}
+
+.sortType{
+    border: 1px orangered solid;
+    background-color: rgb(188, 188, 188);
+    text-align: center;
+    margin-bottom: 3%;
+}
+
+.sortType a{ 
+    cursor: pointer;
+    border-radius: 20px;
+    font-size: 20px;
+    margin-left: 0.5%;
+    margin-right: 0.5%;
+    padding-left: 2%;
+    padding-right: 2%;
+    background-color: white;
+    text-align: center;
+    text-decoration: double;
 }

@@ -72,4 +72,17 @@ export class HomeComponent implements OnInit {
     return posts;
 
   }
+
+  sortTop(){
+    this.postService.getAllPostsSorted("Top").subscribe((response: Post[]) => {
+      this.posts = response
+    })
+  }
+
+  sortHot(){
+    this.postService.getAllPostsSorted("Hot").subscribe((response: Post[]) => {
+      this.posts = response
+    })
+  }
+
 }

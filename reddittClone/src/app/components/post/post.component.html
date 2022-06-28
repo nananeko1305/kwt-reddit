@@ -31,6 +31,12 @@
         <div>
             <app-create-comment [post]="post" (addComment)="addComment($event)"></app-create-comment>
         </div>
+        <div class="commentSort" *ngIf="postComments.length != 0">
+            <h5>Sort comments:</h5>
+            <a (click)="sortTop()">Top</a>
+            <a (click)="sortNew()">New</a>
+            <a (click)="sortOld()">Old</a>
+        </div>
         <div *ngFor="let comment of postComments">
             <app-comment [comment]="comment"></app-comment>
         </div>
