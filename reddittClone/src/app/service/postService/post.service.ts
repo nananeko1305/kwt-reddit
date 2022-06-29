@@ -16,6 +16,10 @@ export class PostService {
     return this.httpClient.get<Post[]>('http://localhost:8080/posts/');
   }
 
+  public getOnePost(postId: number): Observable<Post>{
+    return this.httpClient.get<Post>('http://localhost:8080/posts/' + postId);
+  }
+
   savePost(postRequest: Post) : Observable<any>{
     let headers = new HttpHeaders({
       "Content-Type" : "application/json",
@@ -40,6 +44,10 @@ export class PostService {
 
   getAllPostsSorted(sortType: string): Observable<Post[]>{
     return this.httpClient.get<Post[]>('http://localhost:8080/posts/sort/' + sortType);
+  }
+
+  getAllPostsSortedForCommunity(sortType: string, communityId: number): Observable<Post[]>{
+    return this.httpClient.get<Post[]>('http://localhost:8080/community/' + communityId + '/posts/sort/' + sortType);
   }
   
   public countKarma(reactions: Reaction[]): number{

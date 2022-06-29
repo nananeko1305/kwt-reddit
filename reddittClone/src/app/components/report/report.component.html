@@ -1,0 +1,24 @@
+
+<div class="parentDiv" >
+
+        <h1 *ngIf="reportType == 0">Report post:</h1>
+        <h1 *ngIf="reportType == 1">Report comment:</h1>
+
+        <b>Select report reason:</b><br>
+        <select #selectReportType>
+            <option value="BREAKING_RULES">BREAKING_RULES</option>
+            <option value="HARASSMENT">HARASSMENT</option>
+            <option value="HATE">HATE</option>
+            <option value="SHARING_PERSONAL_INFORMATION">SHARING_PERSONAL_INFORMATION</option>
+            <option value="IMPERSONATION">IMPERSONATION</option>
+            <option value="COPYRIGHT_VIOLATION">COPYRIGHT_VIOLATION</option>
+            <option value="TRADEMARK_VIOLATION">TRADEMARK_VIOLATION</option>
+            <option value="SPAM">SPAM</option>
+            <option value="SELF_HARM_OR_SUICIDE">SELF_HARM_OR_SUICIDE</option>
+            <option value="OTHER">OTHER</option>
+        </select>
+
+        <br><br>
+        <button *ngIf="reportType == 1" (click)="report(1)">Report</button>
+        <button *ngIf="reportType == 0" (click)="report(0)">Report</button>
+</div>

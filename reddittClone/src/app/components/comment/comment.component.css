@@ -27,9 +27,18 @@ div div label b {
     background-color: orangered;
     text-align: center;
     vertical-align: middle;
+    display: inline-block;
 }
 .div2 {
-    border: 1px solid red;
     background-color: rgb(218, 218, 218);
     text-align: left;
+    display: inline-block;
+}
+.div3 {
+    background-color: rgb(218, 218, 218);
+    display: inline-block;
+}
+
+.btnReportComment{
+    height: 100%;
 }

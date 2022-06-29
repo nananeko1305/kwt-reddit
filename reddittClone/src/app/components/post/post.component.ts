@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { Comment } from 'src/app/model/comment';
 import { Moderator } from 'src/app/model/moderator';
@@ -23,13 +23,21 @@ export class PostComponent implements OnInit {
 
   @Input("onePost") post! : Post;
   @Input("communityName") communityName!: string;
+  @Output()postDeleted = new EventEmitter<Post>();
+  @Output()postForReport = new EventEmitter<Post>();
   user! : User;
   moderator!: Moderator;
   postComments! : Comment[];
+  flairExist: boolean = true;
 
   ngOnInit(): void {
-    this.commentService.findCommentsForPost(this.post.id).subscribe((response: Comment[]) => {
-      this.postComments = response
+    this.userService.returnUser().subscribe((response: User) => {
+      this.user = response
+      this.commentService.findCommentsForPost(this.post.id).subscribe((response: Comment[]) => {
+        this.postComments = response
+        if(this.post.flair == null)
+          this.flairExist = false
+      })
     })
   }
 
@@ -38,7 +46,9 @@ export class PostComponent implements OnInit {
   }
 
   deletePost(id: number){
-    this.postService.deletePost(id)
+    this.postService.deletePost(id).subscribe(response => {
+      this.postDeleted.emit(response);
+    });
   }
 
   addComment(comment: Comment){
@@ -73,6 +83,10 @@ export class PostComponent implements OnInit {
     this.commentService.getSortedComments(sortType).subscribe((response: Comment[]) => {
       this.postComments = response
     })
+  }
+
+  report(){
+    this.router.navigate(['report', 0, this.post.id])
   }
 
 }

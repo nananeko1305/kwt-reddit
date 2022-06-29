@@ -5,7 +5,7 @@
     </div>
     <div class="col-11 div2">
         <div class="row">
-            <div class="col-11">
+            <div class="col-10">
                 <p>
                     <span>
                         Community: <a (click)="openOneCommunity(post.community!.id)" class="communityLink"><b>r/{{post.community?.name}}</b></a>
@@ -16,14 +16,14 @@
                     <span style="margin-left: 20px;">
                         Posted by: <b>{{post.user?.displayName}}</b>
                     </span>
-                    <span style="margin-left: 20px;" *ngIf="!post.flair?.deleted">
+                    <span style="margin-left: 20px;" *ngIf="flairExist && !post.flair?.deleted">
                         Flair: <b>{{post.flair?.name}}</b>
                     </span>
-                    
                 </p>
             </div>
-            <div class="col-1" *ngIf="post.user?.role=='MODERATOR'">
-                <a (click)="deletePost(post.id)"><img class="trashPicture" src="assets/trash.png" alt="trash"></a>
+            <div class="col-2">
+                <a class="reportButton" (click)="report()">Report</a>
+                <img *ngIf="post.user?.id == user.id" class="trashPicture" (click)="deletePost(post.id)" src="assets/trash.png" alt="trash">
             </div>
         </div>
         <h5>Title: {{post.title}}</h5>
