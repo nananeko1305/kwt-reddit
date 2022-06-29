@@ -1,3 +1,4 @@
+import { Comment } from "./comment"
 import { Post } from "./post"
 import { User } from "./user"
 
@@ -7,6 +8,6 @@ export interface Report{
     timestamp: Date,
     accepted: boolean,
     user: User,
-    post: Post,
-    comment: Comment
+    post?: Post,
+    comment?: Comment
 }

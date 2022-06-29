@@ -1,0 +1,10 @@
+.parentDiv{
+    text-align: center;
+    margin:auto;
+    margin-top: 2%;
+    padding: 2%;
+    background-color: rgb(208, 208, 208);
+    width: 50%;
+    border: orangered 1px solid;
+    
+}

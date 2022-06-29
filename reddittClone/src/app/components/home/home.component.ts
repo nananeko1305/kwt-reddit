@@ -85,4 +85,12 @@ export class HomeComponent implements OnInit {
     })
   }
 
+
+  deletePost(post : Post){
+    this.posts = this.posts.filter(function(p) {
+      return p.id != post.id;
+    })
+    console.log(JSON.stringify(this.posts))
+  }
+
 }

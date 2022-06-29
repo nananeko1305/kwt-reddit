@@ -1,5 +1,5 @@
 import { HttpStatusCode } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Community } from 'src/app/model/community';
 import { Moderator } from 'src/app/model/moderator';
@@ -75,7 +75,7 @@ export class OneCommunityComponent implements OnInit {
       this.posts = response;
     });
 
-    
+
   }
 
 
@@ -88,4 +88,24 @@ export class OneCommunityComponent implements OnInit {
     this.router.navigate(["suspendCommunity", id]);
   }
 
+  sortTop() {
+    this.postService.getAllPostsSortedForCommunity("Top", this.id).subscribe((response: Post[]) => {
+      this.posts = response
+    })
+  }
+
+  sortHot() {
+    this.postService.getAllPostsSortedForCommunity("Hot", this.id).subscribe((response: Post[]) => {
+      this.posts = response
+    })
+  }
+
+  deletePost(post: Post) {
+    this.posts = this.posts.filter(function (p) {
+      return p.id != post.id;
+    })
+    console.log(JSON.stringify(this.posts))
+  }
 }
+
+

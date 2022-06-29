@@ -11,6 +11,7 @@ import { LoginComponent } from './components/login/login.component';
 import { OneCommunityComponent } from './components/one-community/one-community.component';
 import { PasswordChangeComponent } from './components/password-change/password-change.component';
 import { RegisterComponent } from './components/register/register.component';
+import { ReportComponent } from './components/report/report.component';
 import { SuspendCommunityComponent } from './components/suspend-community/suspend-community.component';
 
 const routes: Routes = [
@@ -25,6 +26,7 @@ const routes: Routes = [
   { path: 'error', component: ErrorComponent},
   { path: 'suspendCommunity/:id', component: SuspendCommunityComponent},
   { path: 'oneCommunity/:id/add', component: AddFlairsAndRulesComponent},
+  { path: 'report/:object/:id', component: ReportComponent},
 ];
 
 @NgModule({

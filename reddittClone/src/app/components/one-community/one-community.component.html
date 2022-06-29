@@ -8,6 +8,11 @@
             <label>{{rule.description}}</label>
         </div>
     </div>
+    <h4>Sort posts</h4>
+    <div class="sortType">
+        <a (click)="sortTop()">Top</a>
+        <a (click)="sortHot()">Hot</a>
+    </div>
     <div *ngIf="user != null && user.role=='ADMIN'">
         <button class="btn" (click)="suspendCommunity(community.id)">Suspend Community</button><br><br>
     </div>
@@ -19,7 +24,7 @@
     <button (click)="createPost(community.id)" *ngIf="token != ''">Create post</button>
 
     <div *ngFor="let post of posts">
-        <app-post [onePost]=post [communityName]=community.name></app-post>
+        <app-post [onePost]=post [communityName]=community.name (postDeleted)="deletePost($event)"></app-post>
     </div>
 </div>
 <router-outlet></router-outlet>

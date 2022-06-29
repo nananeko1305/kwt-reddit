@@ -3,13 +3,20 @@
         <b>Vote</b>
         <app-vote-component [comment]="comment"></app-vote-component>
     </div>
-    <div class="col-11 div2">
+    <div class="col-10 div2">
         <div class="row">
             <label><b>Posted date:</b>{{" "+comment.timestamp}} <b>Posted by:</b>{{" "+comment.user?.displayName}} </label>
         </div>
+        
         <div class="row">
             <label class="inputText">{{comment.text}}</label>
         </div>
+        
+    </div>
+    <div class="col-1 div3">
+        <p>
+            <button class="btnReportComment" (click)="reportComment()">Report comment</button>
+        </p>
     </div>
     
     
