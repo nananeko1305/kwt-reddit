@@ -52,4 +52,8 @@ export class CommentService {
 
     return this.httpClient.post<Reaction>("http://localhost:8080/comments/" + reaction.comment?.id + "/reactions/", reaction, options);
   }
+
+  deleteComment(commentId: number): Observable<Comment>{
+    return this.httpClient.delete<Comment>("http://localhost:8080/comments/" + commentId)
+  }
 }

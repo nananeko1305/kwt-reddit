@@ -21,7 +21,7 @@
                     </span>
                 </p>
             </div>
-            <div class="col-2">
+            <div class="col-2" *ngIf="user.id != 0">
                 <a class="reportButton" (click)="report()">Report</a>
                 <img *ngIf="post.user?.id == user.id" class="trashPicture" (click)="deletePost(post.id)" src="assets/trash.png" alt="trash">
             </div>

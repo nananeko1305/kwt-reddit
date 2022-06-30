@@ -15,7 +15,21 @@ export class UserServiceService {
 
 
   getOneUser(id: number): Observable<User> {
-    return this.httpClient.get<User>('http://localhost:8080/users/' + id);
+    let headers = new HttpHeaders({
+      "Content-Type" : "application/json",
+      "Authorization" : "Bearer " + localStorage.getItem("token"),
+    });
+    let options = {headers:headers};
+    return this.httpClient.get<User>('http://localhost:8080/users/' + id, options);
+  }
+
+  findAll(): Observable<User[]>{
+    let headers = new HttpHeaders({
+      "Content-Type" : "application/json",
+      "Authorization" : "Bearer " + localStorage.getItem("token"),
+    });
+    let options = {headers:headers};
+    return this.httpClient.get<User[]>('http://localhost:8080/users', options);
   }
 
   signUp(signupRequestPayload: SignupRequestPayload): Observable<any> {
@@ -27,7 +41,12 @@ export class UserServiceService {
   }
 
   changeUser(user: User): Observable<any>{
-    return this.httpClient.put('http://localhost:8080/users/' + user.id, user, { responseType: 'text' });
+    let headers = new HttpHeaders({
+      "Content-Type" : "application/json",
+      "Authorization" : "Bearer " + localStorage.getItem("token"),
+    });
+    let options = {headers:headers};
+    return this.httpClient.put('http://localhost:8080/users/' + user.id, user, options);
   }
 
   changePassword(passwordChange: Password): Observable<any>{

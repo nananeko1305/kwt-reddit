@@ -1,0 +1,13 @@
+.parentDiv{
+    background-color: rgb(185, 185, 185);
+    width: 50%;
+    margin: auto;
+    border: 1px solid orangered;
+}
+
+.usersDiv{
+    text-align: center;
+    padding: 1%;
+    font-size: 18px;
+
+}

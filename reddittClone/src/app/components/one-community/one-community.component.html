@@ -8,21 +8,32 @@
             <label>{{rule.description}}</label>
         </div>
     </div>
+    <div class="buttons">
+        <div *ngIf="user != null && user.role=='ADMIN'">
+            <button class="btn" (click)="suspendCommunity(community.id)">Suspend Community</button><br><br>
+        </div>
+        <div *ngIf="user.role=='ADMIN'">
+            <button class="btn" routerLink="users">View users</button><br><br>
+        </div>
+        <div *ngIf="user.role=='ADMIN' && isModerator">
+            <button class="btn" (click)="openReports()">View Reports</button><br><br>
+        </div>
+        <div *ngIf="isModerator==true">
+            <button class="btn" routerLink="add">Add flairs and rules</button><br><br>
+        </div>
+        <div *ngIf="isModerator==true" >
+            <button class="btn" routerLink="ban">Ban/unban users</button><br><br>
+        </div>
+    </div>
+    <div>
+        <button  class="btn" (click)="createPost(community.id)" *ngIf="token != ''">Create post</button>
+    </div>
+    
     <h4>Sort posts</h4>
     <div class="sortType">
         <a (click)="sortTop()">Top</a>
         <a (click)="sortHot()">Hot</a>
     </div>
-    <div *ngIf="user != null && user.role=='ADMIN'">
-        <button class="btn" (click)="suspendCommunity(community.id)">Suspend Community</button><br><br>
-    </div>
-    <div *ngIf="isModerator==true">
-        <button class="btn" routerLink="add">Add flairs and rules</button><br><br>
-    </div>
-
-
-    <button (click)="createPost(community.id)" *ngIf="token != ''">Create post</button>
-
     <div *ngFor="let post of posts">
         <app-post [onePost]=post [communityName]=community.name (postDeleted)="deletePost($event)"></app-post>
     </div>

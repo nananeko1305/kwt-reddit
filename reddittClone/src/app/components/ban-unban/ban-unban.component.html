@@ -1,0 +1,19 @@
+<h1 style="text-align: center; margin-top: 2%;">Ban or Unban users</h1>
+
+<div class="row parentDiv">
+    <div class="col">
+        <div *ngFor="let user of users" class="usersDiv">
+
+            <div style="display: inline-block; width: 15%;">
+                <label><b>Username:</b></label>
+            </div>
+            <div style="display: inline-block; width: 15%;">
+                <label>{{user.username}}</label>
+            </div>
+            <div style="display: inline-block; width: 15%;">
+                <button (click)="banUser(user)">Ban</button>
+                <button (click)="unbanUser(user)">Unban</button>
+            </div>
+        </div>
+    </div>
+</div>

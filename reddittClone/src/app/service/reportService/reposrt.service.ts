@@ -19,4 +19,8 @@ export class ReposrtService {
     let options = {headers:headers};
     return this.httpClient.post<Report>('http://localhost:8080/reports', report, options);
   }
+
+  getReportsForCommunity(communityID: number, reportType: number): Observable<Report[]>{
+    return this.httpClient.get<Report[]>('http://localhost:8080/community/' + communityID + '/reports/' + reportType);
+  }
 }

@@ -1,0 +1,25 @@
+.parentDiv{
+    margin: auto;
+    width: 60%;
+    text-align: center;
+    border: 1px orangered solid;
+    background-color: rgb(194, 194, 194);
+}
+.div1_1{
+    display: inline-block;
+    width: 50%;
+}
+
+.div1_2{
+    display: inline-block;
+    width: 50%;
+}
+.div2_1{
+    display: inline-block;
+    width: 50%;
+}
+
+.div2_2{
+    display: inline-block;
+    width: 50%;
+}

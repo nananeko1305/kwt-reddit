@@ -1,0 +1,25 @@
+<h1 style="text-align: center; margin-top: 2%;">Users and moderators</h1>
+<div class="col parentDiv">
+    <div class="row div1">
+        <h3>Users:</h3>
+        <div *ngFor="let user of usersShow">
+            <div class="div1_1" >
+                <label>{{user.username}}</label>
+            </div>
+            <div class="div1_2">
+                <button (click)="saveModerator(user.id)">Set to moderator</button>
+            </div>
+        </div>
+    </div>
+    <div class="row div2">
+        <h3>Moderator:</h3>
+        <div *ngFor="let moderator of moderatorShow" >
+            <div class="div1_1" >
+                <label>{{moderator.user?.username}}</label>
+            </div>
+            <div class="div1_2">
+                <button (click)="deleteModerator(moderator)">Delete moderator</button>
+            </div>
+        </div>
+    </div>
+</div>

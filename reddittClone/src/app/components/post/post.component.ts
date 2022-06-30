@@ -25,20 +25,31 @@ export class PostComponent implements OnInit {
   @Input("communityName") communityName!: string;
   @Output()postDeleted = new EventEmitter<Post>();
   @Output()postForReport = new EventEmitter<Post>();
-  user! : User;
+  user : User = {
+    id : 0,
+    username : '',
+    role: '',
+    password: '',
+    email : '',
+    avatar: '',
+    registrationDate : new Date,
+    description: '',
+    displayName: '' 
+  };
   moderator!: Moderator;
-  postComments! : Comment[];
+  postComments : Comment[] = [];
   flairExist: boolean = true;
+  token!: string | null;
 
   ngOnInit(): void {
-    this.userService.returnUser().subscribe((response: User) => {
-      this.user = response
+      this.userService.returnUser().subscribe((response: User) => {
+        this.user = response
+      })
       this.commentService.findCommentsForPost(this.post.id).subscribe((response: Comment[]) => {
         this.postComments = response
         if(this.post.flair == null)
           this.flairExist = false
-      })
-    })
+      })  
   }
 
   openOneCommunity(id: number){
