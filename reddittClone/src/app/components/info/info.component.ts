@@ -14,7 +14,17 @@ import { UserServiceService } from 'src/app/service/userService/user-service.ser
 export class InfoComponent implements OnInit {
 
   token!: string | null;
-  user!: User;
+  user : User = {
+    id : 0,
+    username : '',
+    role: '',
+    password: '',
+    email : '',
+    avatar: '',
+    registrationDate : new Date,
+    description: '',
+    displayName: '' 
+  };
   changeInfoForm!: FormGroup;
   karma! : number;
   successfully : boolean = false;
@@ -44,7 +54,9 @@ export class InfoComponent implements OnInit {
 
   changeInfo() {
     this.user.displayName = this.changeInfoForm.get("displayName")?.value;
+    console.log(this.user.displayName)
     this.user.description = this.changeInfoForm.get("description")?.value;
+    console.log(this.user.description)
     this.userService.changeUser(this.user).subscribe((response: HttpStatusCode) => {
       if(HttpStatusCode.Ok){
         this.successfully = true

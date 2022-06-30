@@ -1,0 +1,28 @@
+<h1 style="text-align: center; margin-top: 2%; margin-bottom: 2%;">All reports for community:</h1>
+
+<div class="row parentDiv">
+    <div class="col div1">
+        <h3>Reports for posts:</h3>
+        <div *ngFor="let report of reportsForPost">
+            <div class="div1_1">
+                <label>{{report.reportReason}} | {{report.post?.title}} </label>
+            </div>
+            <div class="div1_2">
+                <button (click)="deletePost(report.post?.id)">Delete post</button>
+            </div>
+            
+        </div>
+    </div>
+    <div class="col div2">
+        <h3>Reports for comment:</h3>
+        <div *ngFor="let report of reportsForComment">
+            <div class="div2_1">
+                <label>{{report.reportReason}} | {{report.comment?.text}} </label>
+            </div>
+            <div class="div2_2">
+                <button (click)="deleteComment(report.comment?.id)">Delete comment</button>
+            </div>
+            
+        </div>
+    </div>
+</div>

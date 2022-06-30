@@ -56,26 +56,25 @@ export class OneCommunityComponent implements OnInit {
 
     this.userService.returnUser().subscribe((response: User) => {
       this.user = response
-    })
+      console.log(JSON.stringify(this.user))
+      this.route.params.subscribe((params: Params) => { this.id = +params["id"] })
 
-    this.route.params.subscribe((params: Params) => { this.id = +params["id"] })
-
-    this.communityService.getOneCommunity(this.id).subscribe((response: Community) => {
-      this.community = response;
-      console.log(JSON.stringify(this.community.moderators))
-      for (let moderator of this.community.moderators) {
-        if (moderator.userID == this.user.id && moderator.communityID == this.community.id) {
-          this.isModerator = true;
-          console.log(this.isModerator)
+      this.communityService.getOneCommunity(this.id).subscribe((response: Community) => {
+        this.community = response;
+        for (let moderator of this.community.moderators) {
+          console.log(JSON.stringify(moderator))
+          if (moderator.user?.id == this.user.id) {
+            console.log("uslo")
+            this.isModerator = true;
+          } else {
+            console.log("nije uslo")
+          }
         }
-      }
-    });
-
-    this.postService.getPostsForCommunity(this.id).subscribe((response: Post[]) => {
-      this.posts = response;
-    });
-
-
+        this.postService.getPostsForCommunity(this.id).subscribe((response: Post[]) => {
+          this.posts = response;
+        });
+      });
+    })
   }
 
 
@@ -106,6 +105,11 @@ export class OneCommunityComponent implements OnInit {
     })
     console.log(JSON.stringify(this.posts))
   }
+
+  openReports() {
+    this.router.navigate(['oneCommunity/' + this.community.id + '/reports'])
+  }
+
 }
 
 

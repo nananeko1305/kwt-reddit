@@ -14,26 +14,29 @@ export class HeaderComponent implements OnInit {
 
   tokenService!: TokenService;
   user!: User;
+  token!: string | null;
 
-  constructor(private ts: TokenService, 
-    private router : Router,
+  constructor(private ts: TokenService,
+    private router: Router,
     private userService: UserServiceService) {
     this.tokenService = ts;
   }
 
 
   ngOnInit(): void {
-    this.userService.returnUser().subscribe(response => {
+    this.userService.returnUser().subscribe((response : User) => {
+      console.log(JSON.stringify(response))
       this.user = response
     })
+
   }
 
-  logout(): void{
+  logout(): void {
     this.tokenService.logout();
     this.router.navigate(["login"]);
   }
 
-  profile(){
+  profile() {
     this.router.navigate(["info"]);
   }
 }

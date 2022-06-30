@@ -23,6 +23,9 @@ import { VoteComponentComponent } from './components/vote-component/vote-compone
 import { SuspendCommunityComponent } from './components/suspend-community/suspend-community.component';
 import { AddFlairsAndRulesComponent } from './components/add-flairs-and-rules/add-flairs-and-rules.component';
 import { ReportComponent } from './components/report/report.component';
+import { ViewReportsComponent } from './components/view-reports/view-reports.component';
+import { ViewUsersComponent } from './components/view-users/view-users.component';
+import { BanUnbanComponent } from './components/ban-unban/ban-unban.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +47,10 @@ import { ReportComponent } from './components/report/report.component';
     VoteComponentComponent,
     SuspendCommunityComponent,
     AddFlairsAndRulesComponent,
-    ReportComponent
+    ReportComponent,
+    ViewReportsComponent,
+    ViewUsersComponent,
+    BanUnbanComponent
   ],
   imports: [
     BrowserModule,

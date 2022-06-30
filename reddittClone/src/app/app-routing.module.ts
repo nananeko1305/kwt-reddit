@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { AddFlairsAndRulesComponent } from './components/add-flairs-and-rules/add-flairs-and-rules.component';
+import { BanUnbanComponent } from './components/ban-unban/ban-unban.component';
 import { CreateCommunityComponent } from './components/create-community/create-community.component';
 import { CreatePostComponent } from './components/create-post/create-post.component';
 import { ErrorComponent } from './components/error/error.component';
@@ -13,6 +14,8 @@ import { PasswordChangeComponent } from './components/password-change/password-c
 import { RegisterComponent } from './components/register/register.component';
 import { ReportComponent } from './components/report/report.component';
 import { SuspendCommunityComponent } from './components/suspend-community/suspend-community.component';
+import { ViewReportsComponent } from './components/view-reports/view-reports.component';
+import { ViewUsersComponent } from './components/view-users/view-users.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -27,6 +30,9 @@ const routes: Routes = [
   { path: 'suspendCommunity/:id', component: SuspendCommunityComponent},
   { path: 'oneCommunity/:id/add', component: AddFlairsAndRulesComponent},
   { path: 'report/:object/:id', component: ReportComponent},
+  { path: 'oneCommunity/:id/reports', component: ViewReportsComponent},
+  { path: 'oneCommunity/:id/users', component: ViewUsersComponent},
+  { path: 'oneCommunity/:id/ban', component: BanUnbanComponent},
 ];
 
 @NgModule({

@@ -1,5 +1,9 @@
+import { Community } from "./community";
+import { User } from "./user";
+
 export interface Moderator{
     id: number,
-    userID?: number,
-    communityID?: number
+    user?: User,
+    community?: Community,
+    isDeleted: boolean
 }

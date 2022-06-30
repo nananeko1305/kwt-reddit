@@ -1,0 +1,32 @@
+.parentDiv{
+    text-align: center;
+    margin: auto;
+    border: 1px solid orangered;
+    width: 80%;
+    background-color: rgb(199, 199, 199);
+}
+
+h3{
+    text-decoration: underline;
+}
+
+.div1{
+}
+
+.div2{
+
+}
+
+.div1_1{
+    margin-top: 1%;
+    display: inline-block;
+    width: 10%;
+    margin-bottom: 1%;
+}
+
+.div1_2{
+    margin-top: 1%;
+    display: inline-block;
+    width: 10%;
+    margin-bottom: 1%;
+}
