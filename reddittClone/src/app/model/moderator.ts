@@ -5,5 +5,5 @@ export interface Moderator{
     id: number,
     user?: User,
     community?: Community,
-    isDeleted: boolean
+    deleted: boolean
 }
