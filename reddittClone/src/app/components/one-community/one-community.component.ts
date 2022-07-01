@@ -63,7 +63,7 @@ export class OneCommunityComponent implements OnInit {
         this.community = response;
         for (let moderator of this.community.moderators) {
           console.log(JSON.stringify(moderator))
-          if (moderator.user?.id == this.user.id) {
+          if (moderator.user?.id == this.user.id && moderator.deleted == false) {
             console.log("uslo")
             this.isModerator = true;
           } else {

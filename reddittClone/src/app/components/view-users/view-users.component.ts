@@ -44,7 +44,7 @@ export class ViewUsersComponent implements OnInit {
         for (let user of this.users) {
           let isModerator = false;
           for (let moderator of this.moderators) {
-            if (user.id == moderator.user?.id && moderator.isDeleted != true) {
+            if (user.id == moderator.user?.id && moderator.deleted != true) {
               this.moderatorShow.push(moderator)
               console.log(moderator.id)
               isModerator = true
@@ -84,7 +84,7 @@ export class ViewUsersComponent implements OnInit {
 
     let moderator: Moderator = {
       id: 0,
-      isDeleted: false,
+      deleted: false,
       user: user,
       community: community
     }
@@ -113,7 +113,7 @@ export class ViewUsersComponent implements OnInit {
       id: moderator.id,
       user: moderator.user,
       community: moderator.community,
-      isDeleted: true
+      deleted: true
     }
     this.moderatorService.delete(moderator).subscribe(response => {
       this.ngOnInit()

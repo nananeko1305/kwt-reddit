@@ -70,7 +70,7 @@ export class BanUnbanComponent implements OnInit {
       id: 0,
       user: this.user,
       community: this.community,
-      isDeleted: false
+      deleted: false
     },
   }
   moderator!: Moderator;
