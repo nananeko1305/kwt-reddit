@@ -26,6 +26,9 @@ import { ReportComponent } from './components/report/report.component';
 import { ViewReportsComponent } from './components/view-reports/view-reports.component';
 import { ViewUsersComponent } from './components/view-users/view-users.component';
 import { BanUnbanComponent } from './components/ban-unban/ban-unban.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatToolbarModule} from "@angular/material/toolbar";
+import {MatButtonModule} from "@angular/material/button";
 
 @NgModule({
   declarations: [
@@ -56,7 +59,10 @@ import { BanUnbanComponent } from './components/ban-unban/ban-unban.component';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatToolbarModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -3,16 +3,36 @@
         <a href=""><img class="logo" src="assets/Reddit_logo_new.svg.png" alt="slika"></a>
     </div>
 
-    <nav *ngIf="tokenService.getToken()==''" style="display: flex !important; margin-right: 20px;">
-        <a routerLink="login"><button>Login</button></a>
-        <a routerLink="register"><button>Registartion</button></a>
-    </nav>
-    <nav *ngIf="tokenService.getToken()!=''" style="display: flex !important;;">
-        <a><button routerLink="info">Profile</button></a>
-    </nav>
-    <nav *ngIf="tokenService.getToken()!=''" style="display: flex !important; margin-right: 20px;">
-        <a><button (click)="logout()">Logout</button></a>
-    </nav>
+<!--    <nav *ngIf="tokenService.getToken()==''" style="display: flex !important; margin-right: 20px;">-->
+<!--        <a routerLink="login"><button>Login</button></a>-->
+<!--        <a routerLink="register"><button>Registartion</button></a>-->
+<!--    </nav>-->
+<!--    <nav *ngIf="tokenService.getToken()!=''" style="display: flex !important;;">-->
+<!--        <a><button routerLink="info">Profile</button></a>-->
+<!--    </nav>-->
+<!--    <nav *ngIf="tokenService.getToken()!=''" style="display: flex !important; margin-right: 20px;">-->
+<!--        <a><button (click)="logout()">Logout</button></a>-->
+<!--    </nav>-->
+
+<mat-toolbar class="app-navbar">
+  <div class="right">
+    <div fxFlex="1 1 auto" fxLayout="row" fxLayoutAlign="flex-end center">
+      <button *ngIf="tokenService.getToken()==''" mat-button mat-ripple routerLink="login">
+        <span>Login</span>
+      </button>
+      <button *ngIf="tokenService.getToken()==''" mat-button mat-ripple routerLink="register">
+        <span>Registration</span>
+      </button>
+      <button *ngIf="tokenService.getToken()!=''" mat-button mat-ripple routerLink="info">
+        <span>Profile</span>
+      </button>
+      <button *ngIf="tokenService.getToken()!=''" (click)="logout()" mat-button mat-ripple>
+        <span>Logout</span>
+      </button>
+    </div>
+  </div>
+</mat-toolbar>
 
 </header>
+
 <router-outlet></router-outlet>
