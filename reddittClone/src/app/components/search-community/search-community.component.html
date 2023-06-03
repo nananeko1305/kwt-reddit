@@ -1,0 +1,156 @@
+<div class="container w-70 mt-5">
+  <mat-card class="community-component" style="background-color: gray">
+
+    <form [formGroup]="formGroup">
+
+      <div class="col">
+        <div class="row mb-5">
+          <span class="d-flex justify-content-center mt-3" style="font-size: 30px">Community search:</span>
+        </div>
+      </div>
+
+      <div class="col d-flex justify-content-center">
+        <div class="row-cols-1">
+          <label>
+            <input type="checkbox" [formControlName]="'ruleCheckbox'" (change)="toggleRuleInput()">
+            <span>Enable Rule Search</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="row m-3">
+
+        <div class="col-2">
+          <div class="row-cols-1">
+            <span>Name</span>
+          </div>
+          <div class="row-cols-1">
+            <input type="text" class="form-control"
+                   [formControlName]="'name'"
+                   [class.invalid-field]="formGroup.get('name')?.invalid">
+          </div>
+        </div>
+
+        <div class="col-2">
+          <div class="row-cols-1">
+            <span>Description</span>
+          </div>
+          <div class="row-cols-1">
+            <input type="text" class="form-control"
+                   [formControlName]="'description'"
+                   [class.invalid-field]="formGroup.get('description')?.invalid">
+          </div>
+        </div>
+
+        <div class="col-1">
+          <div class="row-cols-1">
+            <span>MinPosts</span>
+          </div>
+          <div class="row-cols-1">
+            <input type="number" class="form-control"
+                   [formControlName]="'minPosts'"
+                   [class.invalid-field]="formGroup.get('minPosts')?.invalid">
+          </div>
+        </div>
+
+        <div class="col-1">
+          <div class="row-cols-1">
+            <span>MaxPosts</span>
+          </div>
+          <div class="row-cols-1">
+            <input type="number" class="form-control"
+                   [formControlName]="'maxPosts'"
+                   [class.invalid-field]="formGroup.get('maxPosts')?.invalid">
+          </div>
+        </div>
+
+        <div class="col-1">
+          <div class="row-cols-1">
+            <span>MinKarma</span>
+          </div>
+          <div class="row-cols-1">
+            <input type="number" class="form-control"
+                   [formControlName]="'minKarma'"
+                   [class.invalid-field]="formGroup.get('minKarma')?.invalid">
+          </div>
+        </div>
+
+        <div class="col-1">
+          <div class="row-cols-1">
+            <span>MaxKarma</span>
+          </div>
+          <div class="row-cols-1">
+            <input type="number" class="form-control"
+                   [formControlName]="'maxKarma'"
+                   [class.invalid-field]="formGroup.get('maxKarma')?.invalid">
+          </div>
+        </div>
+
+        <div class="col-2">
+          <div class="row-cols-1">
+            <span>PdfDescription</span>
+          </div>
+          <div class="row-cols-1">
+            <input type="text" class="form-control"
+                   [formControlName]="'pdfDescription'"
+                   [class.invalid-field]="formGroup.get('pdfDescription')?.invalid">
+          </div>
+        </div>
+
+        <div class="col-2">
+          <div class="row-cols-1">
+            <span>Rule</span>
+          </div>
+          <div class="row-cols-1">
+            <input type="text" class="form-control"
+                   [formControlName]="'rule'"
+                   [class.invalid-field]="formGroup.get('rule')?.invalid">
+          </div>
+        </div>
+
+      </div>
+
+      <div class="row m-3">
+
+        <div class="col-5 d-flex align-items-center justify-content-center">
+          <div>
+            <p class="radio-header">Search Accuracy:</p>
+            <label class="radio-label">
+              <input type="radio" formControlName="searchAccuracy" value="OR">
+              <div class="radio-text">OR</div>
+            </label>
+            <label class="radio-label">
+              <input type="radio" formControlName="searchAccuracy" value="AND">
+              <div class="radio-text">AND</div>
+            </label>
+          </div>
+        </div>
+
+        <div class="col-2 d-flex align-items-center justify-content-center">
+          <button class="btn btn-danger w-100" (click)="search()">Search</button>
+        </div>
+
+        <div class="col-5 d-flex align-items-center justify-content-center">
+          <div>
+            <p class="radio-header">Search Type:</p>
+            <label class="radio-label">
+              <input type="radio" formControlName="searchType" value="FUZZY">
+              <div class="radio-text">FUZZY</div>
+            </label>
+            <label class="radio-label">
+              <input type="radio" formControlName="searchType" value="PHRASE">
+              <div class="radio-text">PHRASE</div>
+            </label>
+          </div>
+        </div>
+      </div>
+
+    </form>
+
+  </mat-card>
+
+  <app-community-elastic-list [communityElasticList]="communityElasticList"></app-community-elastic-list>
+
+
+</div>
+

@@ -29,6 +29,13 @@ import { BanUnbanComponent } from './components/ban-unban/ban-unban.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatButtonModule} from "@angular/material/button";
+import { SearchCommunityComponent } from './components/search-community/search-community.component';
+import { SearchPostComponent } from './components/search-post/search-post.component';
+import {MatCardModule} from "@angular/material/card";
+import { CommunityElasticItemComponent } from './components/community-elastic-item/community-elastic-item.component';
+import { CommunityElasticListComponent } from './components/community-elastic-list/community-elastic-list.component';
+import { PostElasticListComponent } from './components/post-elastic-list/post-elastic-list.component';
+import { PostElasticItemComponent } from './components/post-elastic-item/post-elastic-item.component';
 
 @NgModule({
   declarations: [
@@ -53,17 +60,24 @@ import {MatButtonModule} from "@angular/material/button";
     ReportComponent,
     ViewReportsComponent,
     ViewUsersComponent,
-    BanUnbanComponent
+    BanUnbanComponent,
+    SearchCommunityComponent,
+    SearchPostComponent,
+    CommunityElasticItemComponent,
+    CommunityElasticListComponent,
+    PostElasticListComponent,
+    PostElasticItemComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-    MatToolbarModule,
-    MatButtonModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        BrowserAnimationsModule,
+        MatToolbarModule,
+        MatButtonModule,
+        MatCardModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

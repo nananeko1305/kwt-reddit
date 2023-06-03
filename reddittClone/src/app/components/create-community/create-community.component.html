@@ -2,8 +2,14 @@
     <div class="podDiv mb-2">
       <h2>Create new community:</h2>
     </div>
-    
+
     <form [formGroup]="communityForm" #communityFormHtml="ngForm" (ngSubmit)="createCommunity()">
+
+      <div class="inputs mb-3">
+        <h4>Picture:</h4>
+        <input type="file" class="form-control" (change)="onFileChanged($event)">
+      </div>
+
       <div class="inputs mb-3">
         <h4>Name:</h4>
         <input type="text" [formControlName]="'name'" class="form-control" placeholder="Name" aria-label="Username" aria-describedby="basic-addon1" required>
@@ -11,7 +17,9 @@
           Please type a name of community!
         </span>
       </div>
-  
+
+
+
       <div class="inputs mb-3">
         <h4>Description:</h4>
         <input type="text" [formControlName]="'description'" class="form-control" placeholder="Description" aria-label="Username" aria-describedby="basic-addon1" required>
@@ -31,13 +39,13 @@
         <input type="text" [formControlName]="'rule'" class="form-control" placeholder="Flair" aria-label="Username" aria-describedby="basic-addon1" [(ngModel)]="inputRule">
         <button [disabled]="inputRule===''" (click)="addRule(inputRule)" type="button">Add rule</button><p *ngFor="let rule of rules">{{rule.description}}</p>
       </div>
-      
+
       <div class="podDiv">
         <button [disabled]="!communityFormHtml.form">Create community</button>
       </div>
     </form>
 
-    
 
-    
+
+
 </div>

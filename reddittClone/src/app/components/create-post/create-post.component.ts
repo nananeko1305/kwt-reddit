@@ -1,15 +1,11 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { Banned } from 'src/app/model/banned';
 import { Comment } from 'src/app/model/comment';
 import { Community } from 'src/app/model/community';
 import { Flair } from 'src/app/model/flair';
-import { Moderator } from 'src/app/model/moderator';
 import { Post } from 'src/app/model/post';
 import { Reaction } from 'src/app/model/reaction';
-import { Report } from 'src/app/model/report';
-import { Rule } from 'src/app/model/rule';
 import { User } from 'src/app/model/user';
 import { CommunityService } from 'src/app/service/communityService/community.service';
 import { FlairService } from 'src/app/service/flairService/flair.service';
@@ -32,9 +28,9 @@ export class CreatePostComponent implements OnInit {
     deleted: false
   };
   @ViewChild('selectFlair') selectFlair! : ElementRef;
-  selectedFile = null;
+  selectedFile: File = new File([],"pdfFile")
 
-  
+
 
   constructor(
     private postService: PostService,
@@ -130,7 +126,11 @@ export class CreatePostComponent implements OnInit {
     post.title = this.postForm.get('title')?.value;
     post.flair = this.selectedOption;
 
-    this.postService.savePost(post).subscribe(
+    const formData = new FormData();
+    formData.append('pdfFile', this.selectedFile);
+    formData.append('jsonFile', JSON.stringify(post));
+
+    this.postService.savePost(formData).subscribe(
       response => {
         console.log(response)
         reaction.reactionType = 'UPVOTE';

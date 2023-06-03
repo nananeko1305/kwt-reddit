@@ -20,19 +20,18 @@ export class CommunityService {
       "Content-Type" : "application/json",
       "Authorization" : "Bearer " + localStorage.getItem("token"),
     });
-  
+
     let options = {headers:headers}
     return this.httpClient.get<Community>('http://localhost:8080/community/' + id, options);
   }
 
-  saveCommunity(community: Community) : Observable<any>{
+  saveCommunity(communityRequest: FormData) : Observable<any>{
     let headers = new HttpHeaders({
-      "Content-Type" : "application/json",
       "Authorization" : "Bearer " + localStorage.getItem("token"),
     });
-  
+
     let options = {headers:headers}
-    return this.httpClient.post<Community>('http://localhost:8080/community/', community, options);
+    return this.httpClient.post<Community>('http://localhost:8080/community/', communityRequest, options);
   }
 
   suspendCommunity(community: Community) : Observable<any>{
@@ -40,7 +39,7 @@ export class CommunityService {
       "Content-Type" : "application/json",
       "Authorization" : "Bearer " + localStorage.getItem("token"),
     });
-  
+
     let options = {headers:headers}
     return this.httpClient.post<Community>('http://localhost:8080/community/' + community.id + '/suspend', community, options);
   }

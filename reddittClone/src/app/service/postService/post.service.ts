@@ -1,7 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { count, Observable } from 'rxjs';
-import { Community } from 'src/app/model/community';
+import { Observable } from 'rxjs';
 import { Post } from 'src/app/model/post';
 import { Reaction } from 'src/app/model/reaction';
 
@@ -20,12 +19,11 @@ export class PostService {
     return this.httpClient.get<Post>('http://localhost:8080/posts/' + postId);
   }
 
-  savePost(postRequest: Post) : Observable<any>{
+  savePost(postRequest: FormData) : Observable<any>{
     let headers = new HttpHeaders({
-      "Content-Type" : "application/json",
       "Authorization" : "Bearer " + localStorage.getItem("token"),
     });
-  
+
     let options = {headers:headers};
     return this.httpClient.post<Post>('http://localhost:8080/posts/', postRequest, options);
   }
@@ -49,7 +47,7 @@ export class PostService {
   getAllPostsSortedForCommunity(sortType: string, communityId: number): Observable<Post[]>{
     return this.httpClient.get<Post[]>('http://localhost:8080/community/' + communityId + '/posts/sort/' + sortType);
   }
-  
+
   public countKarma(reactions: Reaction[]): number{
 
     let karma: number = 0;

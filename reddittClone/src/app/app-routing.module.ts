@@ -16,6 +16,8 @@ import { ReportComponent } from './components/report/report.component';
 import { SuspendCommunityComponent } from './components/suspend-community/suspend-community.component';
 import { ViewReportsComponent } from './components/view-reports/view-reports.component';
 import { ViewUsersComponent } from './components/view-users/view-users.component';
+import {SearchCommunityComponent} from "./components/search-community/search-community.component";
+import {SearchPostComponent} from "./components/search-post/search-post.component";
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -33,6 +35,8 @@ const routes: Routes = [
   { path: 'oneCommunity/:id/reports', component: ViewReportsComponent},
   { path: 'oneCommunity/:id/users', component: ViewUsersComponent},
   { path: 'oneCommunity/:id/ban', component: BanUnbanComponent},
+  { path: 'search-community', component: SearchCommunityComponent},
+  { path: 'search-posts', component: SearchPostComponent},
 ];
 
 @NgModule({
@@ -41,5 +45,5 @@ const routes: Routes = [
 })
 export class AppRoutingModule {
 
-  
+
  }

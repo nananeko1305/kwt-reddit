@@ -1,29 +1,9 @@
-header{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: orangered;
-}
-
-nav a {
-    margin-left: 5px;
-    display: inline-block;
-}
-
-nav a button{
-    padding: 4px;
-    border-radius: 15px;
-}
-
 .logo {
-    width: 10%;
-    height: 5%;
-    background-color: white;
+    width: 20%;
 }
 
-a {
-    display: flex !important;
-    text-decoration: none;
+.logo:hover {
+  cursor: pointer;
 }
 
 .app-navbar {
@@ -31,9 +11,14 @@ a {
   display: flex;
   flex-wrap: wrap;
   color: white;
+  background-color: orangered;
 }
 
 .right {
   margin-left: auto;
   float: right;
+}
+
+.left {
+  float: left;
 }

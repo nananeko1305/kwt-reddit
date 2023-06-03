@@ -21,6 +21,8 @@ export class CreateCommunityComponent implements OnInit {
   communityForm!: FormGroup;
   rules: Rule[] = [];
   flairs: Flair[] = [];
+  selectedFile: File = new File([],"pdfFile")
+
 
   constructor(private communityService: CommunityService, private router: Router) {
     this.communityRequest = {
@@ -34,6 +36,7 @@ export class CreateCommunityComponent implements OnInit {
     }
   }
 
+
   ngOnInit(): void {
     this.communityForm = new FormGroup({
       name: new FormControl('', Validators.required),
@@ -43,12 +46,22 @@ export class CreateCommunityComponent implements OnInit {
     });
   }
 
+  onFileChanged(event:any){
+    console.log(event)
+    this.selectedFile = event.target.files[0];
+  }
+
   createCommunity() {
     this.communityRequest.name = this.communityForm.get('name')?.value;
     this.communityRequest.description = this.communityForm.get('description')?.value;
     this.communityRequest.flairs = this.flairs
     this.communityRequest.rules = this.rules
-    this.communityService.saveCommunity(this.communityRequest).subscribe(
+
+    const formData = new FormData();
+    formData.append('pdfFile', this.selectedFile);
+    formData.append('jsonFile', JSON.stringify(this.communityRequest));
+
+    this.communityService.saveCommunity(formData).subscribe(
       data => {
         console.log(data)
         this.router.navigate([""]);

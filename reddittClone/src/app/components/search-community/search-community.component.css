@@ -1,0 +1,14 @@
+.community-component {
+  border-radius: 10px;
+}
+
+.radio-label {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.radio-text {
+  font-weight: bold;
+  margin-left: 5px;
+}
