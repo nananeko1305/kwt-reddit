@@ -1,1 +1,3 @@
-<p>post-elastic-list works!</p>
+<div *ngFor="let postElasticDTO of this.postElasticList">
+  <app-post-elastic-item [postElasticDTO]="postElasticDTO"></app-post-elastic-item>
+</div>

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
+import {PostElasticDTO} from "../../model/DTO/PostElasticDTO";
 
 @Component({
   selector: 'app-post-elastic-item',
@@ -6,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./post-elastic-item.component.css']
 })
 export class PostElasticItemComponent {
+
+  @Input() postElasticDTO: PostElasticDTO = new PostElasticDTO();
 
 }
