@@ -12,8 +12,14 @@
       <div class="col d-flex justify-content-center">
         <div class="row-cols-1">
           <label>
-            <input type="checkbox" [formControlName]="'ruleCheckbox'" (change)="toggleRuleInput()">
-            <span>Enable Rule Search</span>
+            <input type="checkbox" [formControlName]="'commentCheckbox'" (change)="toggleCommentInput()">
+            <span>Enable Comment Search</span>
+          </label>
+        </div>
+        <div class="row-cols-1">
+          <label>
+            <input type="checkbox" [formControlName]="'flairCheckbox'" (change)="toggleFlairInput()">
+            <span>Enable Flair Search</span>
           </label>
         </div>
       </div>
@@ -22,45 +28,45 @@
 
         <div class="col-2">
           <div class="row-cols-1">
-            <span>Name</span>
+            <span>Title</span>
           </div>
           <div class="row-cols-1">
             <input type="text" class="form-control"
-                   [formControlName]="'name'"
-                   [class.invalid-field]="formGroup.get('name')?.invalid">
+                   [formControlName]="'title'"
+                   [class.invalid-field]="formGroup.get('title')?.invalid">
           </div>
         </div>
 
         <div class="col-2">
           <div class="row-cols-1">
-            <span>Description</span>
+            <span>Text</span>
           </div>
           <div class="row-cols-1">
             <input type="text" class="form-control"
-                   [formControlName]="'description'"
-                   [class.invalid-field]="formGroup.get('description')?.invalid">
+                   [formControlName]="'text'"
+                   [class.invalid-field]="formGroup.get('text')?.invalid">
           </div>
         </div>
 
         <div class="col-1">
           <div class="row-cols-1">
-            <span>MinPosts</span>
+            <span>MinComments</span>
           </div>
           <div class="row-cols-1">
             <input type="number" class="form-control"
-                   [formControlName]="'minPosts'"
-                   [class.invalid-field]="formGroup.get('minPosts')?.invalid">
+                   [formControlName]="'minComments'"
+                   [class.invalid-field]="formGroup.get('minComments')?.invalid">
           </div>
         </div>
 
         <div class="col-1">
           <div class="row-cols-1">
-            <span>MaxPosts</span>
+            <span>MaxComments</span>
           </div>
           <div class="row-cols-1">
             <input type="number" class="form-control"
-                   [formControlName]="'maxPosts'"
-                   [class.invalid-field]="formGroup.get('maxPosts')?.invalid">
+                   [formControlName]="'maxComments'"
+                   [class.invalid-field]="formGroup.get('maxComments')?.invalid">
           </div>
         </div>
 
@@ -99,12 +105,23 @@
 
         <div class="col-2">
           <div class="row-cols-1">
-            <span>Rule</span>
+            <span>CommentWordFind</span>
           </div>
           <div class="row-cols-1">
             <input type="text" class="form-control"
-                   [formControlName]="'rule'"
-                   [class.invalid-field]="formGroup.get('rule')?.invalid">
+                   [formControlName]="'commentWordFind'"
+                   [class.invalid-field]="formGroup.get('commentWordFind')?.invalid">
+          </div>
+        </div>
+
+        <div class="col mt-3">
+          <div class="row-cols-1 ">
+            <span class="d-flex justify-content-center">Flair</span>
+          </div>
+          <div class="row-cols-1 d-flex justify-content-center">
+            <input type="text" class="input-flair form-control "
+                   [formControlName]="'flair'"
+                   [class.invalid-field]="formGroup.get('flair')?.invalid">
           </div>
         </div>
 

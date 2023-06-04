@@ -1,3 +1,24 @@
-<p>community-elastic-item works!</p>
+<mat-card class="community-elastic-item mt-3">
+  <div class="col">
+    <div class="row">
+      <h1 class="d-flex justify-content-center"><b> Community name:</b>  {{communityElastic.name}}</h1>
+    </div>
+    <div class="row ">
+      <p class="d-flex justify-content-center"><b> Description:</b>  {{communityElastic.description}}</p>
+    </div>
+    <div class="row">
+      <p class="d-flex justify-content-center"><b> Average karma:</b>  {{communityElastic.averageKarma}}</p>
+    </div>
+    <div class="row">
+      <p class="d-flex justify-content-center"><b>Number of posts:</b> {{communityElastic.numberOfPosts}}</p>
+    </div>
+    <div class="row" *ngIf="communityElastic.pdfDescription!=''">
+      <p class="d-flex justify-content-center"><b>PDF description:</b></p>
+    </div>
+    <div class="row" *ngIf="communityElastic.pdfDescription!=''">
+      <span class="d-flex justify-content-center">{{communityElastic.pdfDescription}}</span>
+    </div>
+  </div>
 
-<p>{{communityElastic.name}}</p>
+</mat-card>
+

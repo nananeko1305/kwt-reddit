@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {MultipleValuesCommunityDTO} from "../../model/DTO/MultipleValuesCommunityDTO";
 import {PostElasticDTO} from "../../model/DTO/PostElasticDTO";
 import {SearchPostService} from "../../service/search-post-service/search-post.service";
+import {MultipleValuesPostDTO} from "../../model/DTO/MultipleValuesPostDTO";
 
 @Component({
   selector: 'app-search-post',
@@ -29,24 +30,29 @@ export class SearchPostComponent implements OnInit{
       pdfDescription: [null],
       commentWordFind: [null],
       flair: [null],
-      rule: [null],
       searchAccuracy: ['OR'],
-      searchType: ['FUZZY']
+      searchType: ['FUZZY'],
+      commentCheckbox: [null],
+      flairCheckbox: [null]
     });
   }
 
   ngOnInit(): void {
-    this.toggleRuleInput()
+    const commentControl = this.formGroup.get('commentWordFind');
+    const flairControl = this.formGroup.get('flair');
+    commentControl?.disable()
+    flairControl?.disable()
   }
 
-  toggleRuleInput(): void {
-    const ruleCheckboxControl = this.formGroup.get('ruleCheckbox');
-    const ruleControl = this.formGroup.get('rule');
-    const otherControls = ['name', 'description', 'minPosts', 'maxPosts', 'minKarma', 'maxKarma', 'pdfDescription'];
+  toggleCommentInput(): void {
+    const commentCheckboxControl = this.formGroup.get('commentCheckbox');
+    const commentControl = this.formGroup.get('commentWordFind');
+    const otherControls = ['title', 'text', 'minComments', 'maxComments', 'minKarma', 'maxKarma', 'pdfDescription', 'flair'];
 
-    if (ruleCheckboxControl && ruleControl) {
-      if (ruleCheckboxControl.value) {
-        ruleControl.enable();
+    if (commentCheckboxControl && commentControl) {
+      console.log(commentCheckboxControl.value)
+      if (commentCheckboxControl.value) {
+        commentControl.enable();
         otherControls.forEach((controlName) => {
           const control = this.formGroup.get(controlName);
           if (control) {
@@ -54,8 +60,35 @@ export class SearchPostComponent implements OnInit{
           }
         });
       } else {
-        ruleControl.disable();
+        commentControl.disable();
         otherControls.forEach((controlName) => {
+          const control = this.formGroup.get(controlName);
+          if (control) {
+            control.enable();
+          }
+        });
+      }
+    }
+  }
+
+  toggleFlairInput(): void {
+    const flairCheckboxControl = this.formGroup.get('flairCheckbox');
+    const flairControl = this.formGroup.get('flair');
+    const otherControls = ['title', 'text', 'minComments', 'maxComments', 'minKarma', 'maxKarma', 'pdfDescription', 'commentWordFind'];
+
+    if (flairCheckboxControl && flairControl) {
+      if (flairCheckboxControl.value) {
+        flairControl.enable();
+        otherControls.forEach((controlName) => {
+          const control = this.formGroup.get(controlName);
+          if (control) {
+            control.disable();
+          }
+        });
+      } else {
+        flairControl.disable();
+        otherControls.forEach((controlName) => {
+          console.log(controlName)
           const control = this.formGroup.get(controlName);
           if (control) {
             control.enable();
@@ -68,21 +101,22 @@ export class SearchPostComponent implements OnInit{
   search(){
     const formValues = this.formGroup.value;
 
-    const multipleValuesCommunityDTO: MultipleValuesCommunityDTO = {
-      name: formValues.name,
-      description: formValues.description,
-      minPosts: formValues.minPosts,
-      maxPosts: formValues.maxPosts,
+    const multipleValuesPostDTO: MultipleValuesPostDTO = {
+      title: formValues.title,
+      text: formValues.text,
+      minComments: formValues.minComments,
+      maxComments: formValues.maxComments,
       minKarma: formValues.minKarma,
       maxKarma: formValues.maxKarma,
       pdfDescription: formValues.pdfDescription,
-      rule: formValues.rule,
+      flair: formValues.flair,
+      commentWordFind: formValues.commentWordFind,
       searchAccuracy: formValues.searchAccuracy,
       searchType: formValues.searchType
     };
-    console.log(JSON.stringify(multipleValuesCommunityDTO))
+    console.log(JSON.stringify(multipleValuesPostDTO))
 
-    this.searchService.searchPost(multipleValuesCommunityDTO).subscribe({
+    this.searchService.searchPost(multipleValuesPostDTO).subscribe({
       next: (value) => {
         console.log(JSON.stringify(value))
         this.postElasticList = value

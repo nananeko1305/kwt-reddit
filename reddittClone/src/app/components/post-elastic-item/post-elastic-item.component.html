@@ -1,1 +1,31 @@
-<p>post-elastic-item works!</p>
+<mat-card class="community-elastic-item mt-3">
+  <div class="col">
+    <div class="row">
+      <h1 class="d-flex justify-content-center"><b> Post Title:</b>  {{postElasticDTO.title}}</h1>
+    </div>
+    <div class="row ">
+      <p class="d-flex justify-content-center"><b> Text:</b>  {{postElasticDTO.text}}</p>
+    </div>
+    <div class="row">
+      <p class="d-flex justify-content-center"><b> Number of comments:</b>  {{postElasticDTO.numberOfComments}}</p>
+    </div>
+    <div class="row">
+      <p class="d-flex justify-content-center"><b> Karma:</b>  {{postElasticDTO.karma}}</p>
+    </div>
+    <div class="row">
+      <p class="d-flex justify-content-center"><b>Community name:</b> {{postElasticDTO.community?.name}}</p>
+    </div>
+    <div class="row" *ngIf="postElasticDTO.flair?.name!=null">
+      <p class="d-flex justify-content-center"><b>Flari:</b>{{postElasticDTO.flair?.name}}</p>
+    </div>
+    <div class="row" *ngIf="postElasticDTO.pdfDescription!=''">
+      <p class="d-flex justify-content-center"><b>PDF description:</b></p>
+    </div>
+    <div class="row" *ngIf="postElasticDTO.pdfDescription!=''">
+      <p class="d-flex justify-content-center">{{postElasticDTO.pdfDescription}}</p>
+    </div>
+
+  </div>
+
+</mat-card>
+
