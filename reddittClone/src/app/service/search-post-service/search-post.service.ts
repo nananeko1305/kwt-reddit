@@ -15,9 +15,11 @@ export class SearchPostService {
 
   public searchPost(multipleValuesPostDTO: MultipleValuesPostDTO): Observable<any>{
 
-    if(multipleValuesPostDTO.commentWordFind != ''){
+    console.log(multipleValuesPostDTO)
+
+    if(multipleValuesPostDTO.commentWordFind != null){
       return this.httpClient.post('http://localhost:8080/posts/findPostsByComment', multipleValuesPostDTO);
-    }else if(multipleValuesPostDTO.flair != ''){
+    }else if(multipleValuesPostDTO.flair != null){
       return this.httpClient.post('http://localhost:8080/posts/findPostsByFlair', multipleValuesPostDTO);
     }else {
       return this.httpClient.post('http://localhost:8080/posts/findPostsByMultipleValues', multipleValuesPostDTO);
